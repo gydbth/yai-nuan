@@ -21,3 +21,12 @@ npx serve .
 ## Deploy
 
 เชื่อม repo นี้กับ Vercel ได้เลย (Framework preset: Other, ไม่ต้องตั้ง build command)
+
+## แอพ Android (Play Store)
+
+เว็บนี้เป็น PWA แล้ว (`manifest.json`, `sw.js`, ไอคอนใน `icons/`) จึงห่อเป็นแอพ Android แบบ Trusted Web Activity ได้
+
+1. เข้า https://www.pwabuilder.com ใส่ `https://yai-nuan.vercel.app` แล้วเลือก Package for stores → Android
+2. ตั้ง Package ID เช่น `app.vercel.yai_nuan` แล้วดาวน์โหลดไฟล์ `.aab` และ signing key (เก็บ key ไว้ให้ดี ทำหายแล้วอัปเดตแอพไม่ได้)
+3. PWABuilder จะให้ไฟล์ `assetlinks.json` มา ให้วางไว้ที่ `.well-known/assetlinks.json` ใน repo นี้ แล้ว push (ถ้าใช้ Play App Signing ให้เพิ่ม SHA-256 จาก Play Console → App integrity ลงในไฟล์ด้วย)
+4. อัปโหลด `.aab` ใน Google Play Console

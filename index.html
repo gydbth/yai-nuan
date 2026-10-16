@@ -7,7 +7,13 @@
 <meta name="theme-color" content="#fffaf2">
 <meta property="og:title" content="แสงเช้า · คุยกับยายนวล">
 <meta property="og:description" content="กำลังใจจากยายทุกเช้า ก่อนออกไปใช้ชีวิต">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23e9b44c'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23fff3c4'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ยายนวล">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>แสงเช้า</title>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -1153,5 +1159,9 @@ $("copyText").addEventListener("click", () => {
 })();
 </script>
 
+<script>
+// Install support: lets the site work as an app (Play Store / home screen) and open on a poor connection
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+</script>
 </body>
 </html>
