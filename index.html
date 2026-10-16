@@ -709,6 +709,36 @@ const RULES = `คุณคือ "ยายนวล" คุณยายชา�
 const KEYWORDS = { tired: /เหนื่อย|ล้า|ง่วง|หมดแรง|เพลีย/, sad: /เศร้า|เสียใจ|ร้องไห้|ผิดหวัง|อกหัก/, lonely: /เหงา|คนเดียว|คิดถึง/, worried: /กังวล|เครียด|กลัว|ไม่สบายใจ|ตื่นเต้น/, cranky: /โกรธ|หงุดหงิด|โมโห|รำคาญ|หัวร้อน/, happy: /ดีใจ|มีความสุข|ใจฟู|สนุก|แฮปปี้|สดใส/ };
 const CRISIS = /อยากตาย|ฆ่าตัวตาย|ทำร้ายตัวเอง|ไม่อยากอยู่/;
 const detectMood = t => Object.keys(KEYWORDS).find(k => KEYWORDS[k].test(t)) || null;
+const typing = () => {
+  const t = document.createElement("div"); t.className = "typing"; t.innerHTML = "<i></i><i></i><i></i>";
+  $("log").appendChild(t); $("log").scrollTop = $("log").scrollHeight; return t;
+};
+const applyReply = (reply, mood) => {
+  mood = MOODS[mood] ? mood : null;
+  if (mood && mood !== data.mood) { data.mood = mood; save(); setLook(moodLook()); }
+  add("g", String(reply || "ยายฟังอยู่นะลูก"));
+  if (data.step === "mood" && data.mood) { data.step = "cheer"; save(); }
+};
+
+/* On the public site (no window.claude) grandma answers through /api/chat; scripted lines if it fails */
+let useApi = location.protocol.startsWith("http");
+async function askApi(text) {
+  const t = typing();
+  const history = data.log.slice(-15, -1).map(m => ({ who: m.who === "g" ? "g" : "u", text: String(m.text || "").slice(0, 500) }));
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ history, message: text.slice(0, 500) }), signal: AbortSignal.timeout(25000)
+    });
+    if (res.status === 404 || res.status === 405 || res.status === 503) useApi = false; // no endpoint or no key: stay scripted
+    if (!res.ok) return false;
+    const r = await res.json();
+    if (!r || !r.reply) return false;
+    t.remove(); applyReply(r.reply, r.mood);
+    return true;
+  } catch (e) { return false; }
+  finally { t.remove(); }
+}
 
 async function send(text) {
   user(text);
@@ -718,17 +748,14 @@ async function send(text) {
     return;
   }
   if (data.step === "promise") return makePromise(text.replace(/^วันนี้(จะ)?/, "").trim() || text, true);
+  if (!sample && useApi && await askApi(text)) return;
   if (sample) {
-    const t = document.createElement("div"); t.className = "typing"; t.innerHTML = "<i></i><i></i><i></i>";
-    $("log").appendChild(t); $("log").scrollTop = $("log").scrollHeight;
+    const t = typing();
     const history = data.log.slice(-14).map(m => (m.who === "g" ? "ยาย: " : "หลาน: ") + m.text).join("\n");
     try {
       const r = await sample.json(`${RULES}\n\nบทสนทนาวันนี้:\n${history}\n\nตอบข้อความล่าสุดของหลาน`, { modelTier: "quick", cache: false });
       t.remove();
-      const mood = r && MOODS[r.mood] ? r.mood : null;
-      if (mood && mood !== data.mood) { data.mood = mood; save(); setLook(moodLook()); }
-      add("g", String(r && r.reply || "ยายฟังอยู่นะลูก"));
-      if (data.step === "mood" && data.mood) { data.step = "cheer"; save(); }
+      applyReply(r && r.reply, r && r.mood);
       return;
     } catch (e) {
       t.remove();

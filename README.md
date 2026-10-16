@@ -9,14 +9,17 @@
 - ตั้งใจทำเรื่องดี ๆ ให้ตัวเองหนึ่งเรื่อง แล้วกดค้างเพื่อกอดยายก่อนออกจากบ้าน
 - แชร์คำยายเป็นการ์ดสตอรี่ 1080×1920 พร้อม QR code สำหรับ Instagram, TikTok และ Facebook
 
-ทั้งแอพอยู่ในไฟล์ `index.html` ไฟล์เดียว (`claude-artifact.html` คือฉบับเดียวกันสำหรับเปิดใน Claude ซึ่งพิมพ์คุยกับยายผ่าน Claude ได้ ส่วนบนเว็บนี้ยายจะตอบจากคำที่เตรียมไว้) ไม่ต้อง build ข้อมูลของผู้ใช้เก็บอยู่ในเบราว์เซอร์ของแต่ละคน (localStorage)
+ทั้งแอพอยู่ในไฟล์ `index.html` ไฟล์เดียว (`claude-artifact.html` คือฉบับเดียวกันสำหรับเปิดใน Claude ซึ่งพิมพ์คุยกับยายผ่าน Claude ได้ ส่วนบนเว็บนี้ยายตอบผ่าน `api/chat.js` ซึ่งเรียก Claude ด้วย `ANTHROPIC_API_KEY` ถ้ายังไม่ได้ตั้ง key หรือเรียกไม่สำเร็จ ยายจะตอบจากคำที่เตรียมไว้) ไม่ต้อง build ข้อมูลของผู้ใช้เก็บอยู่ในเบราว์เซอร์ของแต่ละคน (localStorage)
 
 ## รันในเครื่อง
 
 ```bash
-npx serve .
+npm install
+ANTHROPIC_API_KEY=sk-ant-... vercel dev
 ```
+
+ไม่ใส่ key ก็รันได้ หน้าเว็บจะใช้คำตอบที่เตรียมไว้แทน
 
 ## Deploy
 
-เชื่อม repo นี้กับ Vercel ได้เลย (Framework preset: Other, ไม่ต้องตั้ง build command)
+เชื่อม repo นี้กับ Vercel ได้เลย (Framework preset: Other, ไม่ต้องตั้ง build command) แล้วเพิ่ม Environment Variable `ANTHROPIC_API_KEY` ใน Project Settings เพื่อให้ยายตอบด้วย AI
