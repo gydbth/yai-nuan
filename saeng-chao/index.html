@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="คุยกับยายนวลทุกเช้า บอกความรู้สึก แล้วยายจะให้กำลังใจ ให้คำคม และกอดก่อนออกจากบ้าน">
+<meta name="theme-color" content="#fffaf2">
+<meta property="og:title" content="แสงเช้า · คุยกับยายนวล">
+<meta property="og:description" content="กำลังใจจากยายทุกเช้า ก่อนออกไปใช้ชีวิต">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23e9b44c'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23fff3c4'/%3E%3C/svg%3E">
+<title>แสงเช้า</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: a chat with Grandma Nuan at home. Top: her living room in morning light, with her changing clothes and pose to match how you feel.
+   Below: the chat, quick replies, and a text box. Warm single light look by design. */
+:root {
+  color-scheme: light;
+  --wall: #fbf1e2;
+  --wall-2: #f4e2c9;
+  --floor: #d9b48a;
+  --paper: #ffffff;
+  --cream: #fffaf2;
+  --ink: #33251f;
+  --ink-soft: #7b6a60;
+  --ink-faint: #ad9e94;
+  --line: #eadfd2;
+  --accent: #c8643b;
+  --honey: #e9b44c;
+  --mood: #f6e1c8;
+  --f: "Kanit", "Sukhumvit Set", "Noto Sans Thai", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--f); font-weight: 300; font-size: 16px; line-height: 1.55; overflow: hidden; }
+[hidden] { display: none !important; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:focus-visible, input:focus-visible { outline: 2.5px solid var(--honey); outline-offset: 2px; }
+
+.stage { height: 100%; display: flex; justify-content: center; }
+.app { width: 100%; max-width: 460px; height: 100%; display: flex; flex-direction: column; background: var(--cream); position: relative; overflow: hidden; }
+@media (min-width: 620px) {
+  body { background: #efe6da; }
+  .stage { align-items: center; padding-block: 28px; }
+  .app { height: min(860px, 100%); border-radius: 36px; box-shadow: 0 40px 80px -40px rgba(60, 35, 20, .45); }
+}
+
+/* Header */
+.head { display: flex; align-items: center; gap: .7rem; padding: 12px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); background: var(--cream); border-bottom: 1px solid var(--line); z-index: 2; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--mood); overflow: hidden; flex: none; display: grid; place-items: end center; transition: background .5s; }
+.avatar svg { width: 46px; height: auto; margin-bottom: -26px; }
+.who { flex: 1; min-width: 0; line-height: 1.25; }
+.who b { font-weight: 500; font-size: 1.02rem; display: block; }
+.who small { font-size: .78rem; color: var(--ink-soft); display: flex; align-items: center; gap: .35rem; }
+.who small i { width: 7px; height: 7px; border-radius: 50%; background: #5cae78; }
+.streak { font-size: .78rem; color: var(--ink-soft); background: #f4ebdf; border-radius: 999px; padding: .2rem .65rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.streak b { color: var(--ink); font-weight: 500; }
+
+/* Living room */
+.scene { position: relative; flex: none; height: clamp(210px, 34vh, 290px); overflow: hidden; background: linear-gradient(180deg, var(--wall) 0%, var(--wall-2) 100%); }
+.scene::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: repeating-linear-gradient(90deg, #d4ab7f 0 58px, #cfa476 58px 60px), var(--floor); border-top: 3px solid #c39566; }
+.window { position: absolute; top: 14%; right: 9%; width: 30%; max-width: 130px; aspect-ratio: 4 / 5; border-radius: 10px 10px 4px 4px; border: 5px solid #fff; box-shadow: 0 0 0 1.5px #d9c3a6, 0 0 60px 10px rgba(255, 220, 150, .55);
+  background: radial-gradient(circle at 70% 30%, #fff6c9 0 12%, #ffe08f 13% 18%, transparent 19%), linear-gradient(180deg, #bfe3f6 0%, #e9f5fb 70%, #cde8c4 70%); }
+.window::before, .window::after { content: ""; position: absolute; background: #fff; }
+.window::before { left: 50%; top: 0; bottom: 0; width: 4px; margin-left: -2px; }
+.window::after { top: 50%; left: 0; right: 0; height: 4px; margin-top: -2px; }
+.calendar { position: absolute; top: 16%; left: 9%; width: 46px; background: #fff; border-radius: 4px; box-shadow: 0 2px 0 #e4d3bd; text-align: center; font-size: .62rem; line-height: 1.2; color: var(--ink-soft); padding-bottom: 4px; }
+.calendar b { display: block; background: var(--accent); color: #fff; font-weight: 500; border-radius: 4px 4px 0 0; padding: 2px 0; font-size: .58rem; }
+.calendar span { display: block; font-size: 1.15rem; color: var(--ink); font-weight: 500; }
+.plant { position: absolute; left: 6%; bottom: 14%; width: 17%; max-width: 70px; }
+.glow { position: absolute; left: 50%; bottom: 10%; width: 62%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, var(--mood) 0 55%, transparent 70%); transition: background .6s; }
+.grandma { position: absolute; left: 50%; bottom: 6%; height: 88%; transform: translateX(-50%); z-index: 1; }
+.grandma svg { height: 100%; width: auto; display: block; overflow: visible; }
+.grandma.swap svg { animation: swap .5s cubic-bezier(.3, 1.5, .5, 1); }
+@keyframes swap { from { transform: scale(.9) translateY(8px); opacity: .3; } to { transform: none; opacity: 1; } }
+.hearts { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.heart { position: absolute; width: 20px; height: 20px; animation: float 1.9s ease-out forwards; }
+@keyframes float { from { opacity: 0; transform: translateY(0) scale(.6); } 15% { opacity: 1; } to { opacity: 0; transform: translateY(-150px) scale(1.1); } }
+
+/* Chat */
+.log { flex: 1; min-height: 0; overflow-y: auto; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 6px; scroll-behavior: smooth; }
+.day-chip { align-self: center; font-size: .74rem; color: var(--ink-faint); background: #f4ebdf; border-radius: 999px; padding: .1rem .7rem; margin-bottom: 4px; }
+.msg { max-width: 82%; padding: .55rem .9rem; border-radius: 20px; font-size: .98rem; font-weight: 400; overflow-wrap: anywhere; animation: in .3s ease-out; }
+@keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.msg.g { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); border-bottom-left-radius: 6px; }
+.msg.u { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 6px; font-weight: 300; }
+.msg.quote { font-weight: 500; font-size: 1.05rem; background: #fff6e3; border-color: #f1ddb3; }
+.typing { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); border-radius: 20px; border-bottom-left-radius: 6px; padding: .7rem .9rem; display: flex; gap: 4px; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); animation: dot 1s infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes dot { 0%, 60%, 100% { transform: none; opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+/* Composer */
+.composer { flex: none; border-top: 1px solid var(--line); background: var(--cream); padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 8px; }
+.replies { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.reply { border: 1.5px solid var(--line); background: var(--paper); border-radius: 999px; min-height: 40px; padding: 0 .95rem; font-size: .9rem; font-weight: 400; display: inline-flex; align-items: center; gap: .4rem; transition: border-color .2s, transform .1s; }
+.reply:hover { border-color: #cdb9a4; }
+.reply:active { transform: scale(.97); }
+.reply .dot { width: 10px; height: 10px; border-radius: 50%; }
+.reply.main { background: var(--ink); color: #fff; border-color: var(--ink); }
+.inputrow { display: flex; gap: 8px; align-items: center; }
+.inputrow input { flex: 1; min-width: 0; min-height: 46px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--paper); padding: 0 1rem; font: inherit; font-weight: 400; color: var(--ink); }
+.inputrow input::placeholder { color: var(--ink-faint); font-weight: 300; }
+.send { width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--ink); color: #fff; display: grid; place-items: center; flex: none; padding: 0; }
+.send:disabled { background: var(--line); }
+.send svg { width: 20px; height: 20px; }
+.hold { position: relative; overflow: hidden; min-height: 58px; border-radius: 999px; border: 0; background: #f1e6d8; font-size: 1rem; font-weight: 400;
+  touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; display: flex; align-items: center; justify-content: center; padding: 0 64px; }
+.hold .fill { position: absolute; inset: 0; width: 0; background: var(--accent); border-radius: 999px; }
+.hold .label { position: relative; z-index: 1; }
+.hold .knob { position: absolute; right: 6px; top: 6px; width: 46px; height: 46px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; z-index: 2; }
+.hold .knob svg { width: 22px; height: 22px; }
+
+/* Share sheet */
+.sheet { position: fixed; inset: 0; z-index: 20; display: flex; align-items: flex-end; justify-content: center; background: rgba(40, 25, 15, .45); }
+.sheet-panel { width: 100%; max-width: 460px; max-height: 100%; overflow-y: auto; background: var(--cream); border-radius: 28px 28px 0 0; display: flex; flex-direction: column; gap: .85rem;
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 1rem calc(1.25rem + env(safe-area-inset-bottom, 0px)); animation: up .32s cubic-bezier(.2, .8, .2, 1); }
+@keyframes up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; }
+.sheet-head h2 { margin: 0; font-size: 1.05rem; font-weight: 500; }
+.icon-btn { width: 42px; height: 42px; border-radius: 50%; border: 0; background: #f1e6d8; display: grid; place-items: center; padding: 0; }
+.icon-btn svg { width: 18px; height: 18px; }
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; padding: 4px; background: #f1e6d8; border-radius: 999px; }
+.seg button { border: 0; background: transparent; min-height: 38px; border-radius: 999px; font-size: .88rem; color: var(--ink-soft); }
+.seg button[aria-pressed="true"] { background: var(--paper); color: var(--ink); font-weight: 500; box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
+.preview { display: flex; justify-content: center; }
+.preview img { width: min(56vw, 220px); aspect-ratio: 9 / 16; max-width: 100%; border-radius: 18px; background: #f1e6d8; box-shadow: 0 18px 40px -18px rgba(60, 35, 20, .5); -webkit-touch-callout: default; transition: opacity .2s; }
+.pill { min-height: 54px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; font-size: 1rem; font-weight: 400; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: 0 1.4rem; }
+.pill svg { width: 20px; height: 20px; }
+.how-title { margin: 0 0 -.4rem; font-size: .85rem; font-weight: 500; }
+.how { margin: 0; padding: .85rem 1rem .85rem 2.1rem; background: #f4ebdf; border-radius: 18px; font-size: .88rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: .25rem; }
+.how b { color: var(--ink); font-weight: 500; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.row2 button { border: 0; background: #f1e6d8; border-radius: 999px; min-height: 44px; font-size: .9rem; }
+
+.toast { position: fixed; left: 50%; top: calc(70px + env(safe-area-inset-top, 0px)); transform: translateX(-50%); background: var(--ink); color: #fff; padding: .5rem 1.05rem; border-radius: 999px; font-size: .88rem; z-index: 30; max-width: calc(100% - 32px); text-align: center; }
+
+/* Grandma motion */
+.gm-body { transform-origin: 100px 240px; animation: breathe 4s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.012, .993); } }
+.gm-wave { transform-box: fill-box; transform-origin: 0% 100%; animation: wave 1.6s ease-in-out infinite; }
+@keyframes wave { 50% { transform: rotate(-14deg); } }
+.gm-fan { transform-origin: 148px 92px; animation: fan .5s ease-in-out infinite alternate; }
+@keyframes fan { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
+.gm-steam { animation: steam 2.4s ease-in-out infinite; }
+@keyframes steam { 0%, 100% { opacity: .15; transform: translateY(2px); } 50% { opacity: .7; transform: translateY(-3px); } }
+.gm-spark { transform-box: fill-box; transform-origin: center; animation: spark 1.4s ease-in-out infinite; }
+@keyframes spark { 50% { transform: scale(.55); opacity: .5; } }
+.gm-blink { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.15); } }
+
+@media (max-height: 640px) { .scene { height: 190px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .log { scroll-behavior: auto; } }
+</style>
+
+</head>
+<body>
+<div class="stage">
+<main class="app">
+  <header class="head">
+    <div class="avatar" id="avatar" aria-hidden="true"></div>
+    <div class="who"><b>ยายนวล</b><small><i></i>อยู่บ้าน</small></div>
+    <div class="streak" id="streak">วันแรก</div>
+  </header>
+
+  <div class="scene" aria-hidden="true">
+    <div class="window"></div>
+    <div class="calendar"><b id="calMonth">ต.ค.</b><span id="calDay">16</span></div>
+    <svg class="plant" viewBox="0 0 60 80"><path d="M30 48 C18 40 10 28 14 16 C24 22 30 34 30 48Z" fill="#7fb07a"/><path d="M30 48 C40 38 48 26 44 12 C34 20 30 34 30 48Z" fill="#6aa067"/><path d="M30 50 C26 36 28 22 32 8 C36 22 34 36 30 50Z" fill="#8fc189"/><path d="M16 48 H44 L40 76 H20 Z" fill="#c8643b"/><path d="M14 46 H46 V52 H14Z" fill="#b5552f"/></svg>
+    <div class="glow"></div>
+    <div class="grandma" id="grandma"></div>
+    <div class="hearts" id="hearts"></div>
+  </div>
+
+  <div class="log" id="log" aria-live="polite"></div>
+
+  <div class="composer">
+    <div class="replies" id="replies"></div>
+    <form class="inputrow" id="form">
+      <label class="sr" for="text">พิมพ์คุยกับยาย</label>
+      <input id="text" type="text" maxlength="300" placeholder="พิมพ์คุยกับยาย…" autocomplete="off" enterkeyhint="send">
+      <button class="send" id="sendBtn" type="submit" aria-label="ส่ง"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+    </form>
+  </div>
+</main>
+</div>
+
+<!-- Share sheet -->
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-panel">
+    <div class="sheet-head">
+      <h2 id="sheetTitle">ส่งคำยายลงสตอรี่</h2>
+      <button class="icon-btn" id="closeSheet" type="button" aria-label="ปิด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="seg" role="group" aria-label="แชร์ไปที่">
+      <button type="button" data-platform="ig" aria-pressed="true">Instagram</button>
+      <button type="button" data-platform="tiktok" aria-pressed="false">TikTok</button>
+      <button type="button" data-platform="fb" aria-pressed="false">Facebook</button>
+    </div>
+    <div class="preview"><img id="storyImg" alt="การ์ดสตอรี่คำยายพร้อม QR code"></div>
+    <button class="pill" id="nativeShare" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/></svg>
+      <span id="nativeLabel">แชร์ไปที่ Instagram Stories</span>
+    </button>
+    <p class="how-title">หรือแชร์เองใน 4 ขั้น</p>
+    <ol class="how" id="how"></ol>
+    <div class="row2">
+      <button id="copyImg" type="button">คัดลอกรูป</button>
+      <button id="copyText" type="button">คัดลอกแคปชัน</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+// Link encoded in the QR code. Replace with your own domain once the app is live.
+const APP_URL = "https://claude.ai/artifact/MJSZqK7vELRA9tUxCuoP7g";
+
+/* ---------- Feelings: what you say, what grandma wears, how she stands, what she says ---------- */
+const MOODS = {
+  happy: {
+    label: "ใจฟู", color: "#e9b44c", glow: "#fbe3a6", say: "วันนี้ใจฟูมากเลยยาย",
+    outfit: "floral", pose: "cheer", face: "smile",
+    react: [
+      "แหม ยิ้มแก้มปริเลยนะหลาน ยายใส่เสื้อลายดอกตัวเก่งมาฉลองด้วยเลย",
+      "เห็นหลานมีความสุข ยายก็ใจฟูตามไปด้วยเลยลูก",
+      "ดีใจด้วยนะลูกรัก วันนี้ยายจะยิ้มทั้งวันเลย"
+    ],
+    msgs: [
+      "เห็นหลานยิ้มแล้ว ยายก็ยิ้มตามเลย วันนี้ต้องเป็นวันที่ดีแน่ ๆ",
+      "ใจฟูแบบนี้ แบ่งให้คนข้าง ๆ บ้างนะลูก ความสุขยิ่งแบ่งยิ่งเยอะ",
+      "จำความรู้สึกดี ๆ วันนี้ไว้นะ วันไหนเหนื่อยจะได้หยิบมาใช้",
+      "เรื่องดี ๆ ที่เกิดขึ้น หลานคู่ควรกับมันทุกอย่างเลยนะ",
+      "วันนี้พลังดี ลองทำเรื่องที่เลื่อนมานานดูสิ ยายเชียร์อยู่",
+      "ยิ้มแบบนี้ไปทั้งวันเลยนะ ใครเห็นก็ใจดีด้วย",
+      "ขอบคุณตัวเองด้วยนะลูก ที่ทำให้วันนี้ดีได้ขนาดนี้",
+      "ยายอยากให้หลานมีวันแบบนี้บ่อย ๆ ยายจะสวดให้ทุกคืนเลย"
+    ],
+    ideas: ["ทักเพื่อนที่ไม่ได้คุยนาน", "เริ่มเรื่องที่เลื่อนมานาน", "ชมใครสักคนจากใจ"]
+  },
+  tired: {
+    label: "เหนื่อย", color: "#b8a487", glow: "#efe3d0", say: "วันนี้เหนื่อยจังเลยยาย",
+    outfit: "cardigan", pose: "tea", face: "gentle",
+    react: [
+      "โถ เหนื่อยมาเหรอลูก มา ยายชงชาร้อน ๆ ไว้ให้แล้ว",
+      "เหนื่อยเหรอหลาน มานั่งตรงนี้ก่อน ยายนวดไหล่ให้นะ",
+      "โอ๋ หลานยายเหนื่อยมาเยอะเลยสินะ จิบชาก่อนลูก"
+    ],
+    msgs: [
+      "วันนี้ทำเท่าที่ไหวพอนะลูก ไม่ต้องให้ครบร้อยหรอก",
+      "พักไม่ใช่ขี้เกียจนะหลาน คนเราต้องเติมแรงก่อนไปต่อ",
+      "ร่างกายบอกว่าเหนื่อย ก็ฟังมันหน่อย คืนนี้นอนเร็ว ๆ ยายสั่ง",
+      "หลานสู้มาเยอะแล้ว ยายเห็นนะ ไม่ต้องพิสูจน์อะไรเพิ่มแล้ว",
+      "ค่อย ๆ ทำทีละอย่าง เดี๋ยวก็เสร็จ ไม่มีใครเร่งหลานหรอก",
+      "ถ้าเหนื่อยจนไม่ไหว ขอความช่วยเหลือได้นะลูก ไม่ต้องแบกคนเดียว",
+      "กินข้าวให้อิ่ม ดื่มน้ำเยอะ ๆ แรงจะกลับมาเองนะหลาน",
+      "ยายภูมิใจในความขยันของหลาน แต่ยายรักตัวหลานมากกว่างานนะ"
+    ],
+    ideas: ["นอนก่อนสี่ทุ่ม", "ดื่มน้ำให้ครบ 8 แก้ว", "พักสายตาทุกชั่วโมง"]
+  },
+  worried: {
+    label: "กังวล", color: "#8fb6d6", glow: "#dce9f4", say: "กังวลนิดหน่อยยาย",
+    outfit: "shawl", pose: "chest", face: "concern",
+    react: [
+      "มีเรื่องอะไรไม่สบายใจเหรอลูก มานั่งใกล้ ๆ ยายก่อน",
+      "ยายเห็นหน้าก็รู้แล้วว่ามีเรื่องค้างใจ เล่าให้ยายฟังได้นะ",
+      "ไม่เป็นไรนะลูก ยายอยู่ตรงนี้ จับมือยายไว้ก่อน"
+    ],
+    msgs: [
+      "เรื่องที่กังวล ค่อย ๆ แก้ทีละเรื่องนะ ยายอยู่ข้าง ๆ หลานเสมอ",
+      "หายใจลึก ๆ ช้า ๆ กับยายก่อน เข้า… ออก… ใจจะเบาลงหน่อย",
+      "เรื่องที่กลัวส่วนใหญ่ไม่เคยเกิดขึ้นจริงหรอกลูก ยายอยู่มานาน ยายรู้",
+      "ทำส่วนที่หลานทำได้ให้ดีที่สุด ส่วนที่เหลือปล่อยให้มันเป็นไป",
+      "ถึงผลจะออกมาไม่ดี ยายก็ยังรักหลานเท่าเดิม",
+      "หลานผ่านเรื่องยาก ๆ มาตั้งเยอะ ครั้งนี้ก็จะผ่านไปได้",
+      "ลองเขียนสิ่งที่กังวลลงกระดาษดูนะลูก พอเห็นเป็นตัวหนังสือ มันจะดูเล็กลง",
+      "คืนนี้ถ้านอนไม่หลับ นึกถึงยายไว้นะ ยายสวดให้หลานทุกคืน"
+    ],
+    ideas: ["จดเรื่องที่กังวลลงกระดาษ", "ทำทีละงาน ไม่รีบ", "หายใจลึก ๆ ก่อนตอบแชท"]
+  },
+  sad: {
+    label: "เศร้า", color: "#9a8fc7", glow: "#e3def3", say: "วันนี้เศร้า ๆ ยาย",
+    outfit: "sweater", pose: "open", face: "soothe",
+    react: [
+      "โอ๋ ๆ มานี่มา ยายอยู่นี่แล้ว",
+      "มาให้ยายกอดก่อนนะลูก ไม่ต้องพูดอะไรก็ได้",
+      "ยายเสียใจด้วยนะหลาน ยายอยู่ตรงนี้กับหลานนะ"
+    ],
+    msgs: [
+      "ร้องไห้ได้นะลูก ไม่ต้องเก่งตลอดเวลา",
+      "เสียใจก็ไม่ผิดนะหลาน ใจคนเราต้องมีวันฝนตกบ้าง",
+      "ยายไม่ต้องรู้หรอกว่าเกิดอะไรขึ้น แค่อยากให้รู้ว่ายายอยู่ข้าง ๆ",
+      "วันนี้มันหนัก แต่มันจะไม่หนักแบบนี้ไปตลอดหรอกลูก",
+      "กินข้าวให้ได้ นอนให้พอนะ แล้วใจจะค่อย ๆ ดีขึ้นเอง",
+      "หลานมีค่ากับยายเสมอ ไม่ว่าวันนี้จะเกิดอะไรขึ้นก็ตาม",
+      "ใจที่เจ็บค่อย ๆ หายได้นะลูก ให้เวลามันหน่อย ยายรอได้",
+      "ถ้าเศร้ามาหลายวันแล้ว คุยกับคนที่ไว้ใจนะลูก หรือโทร 1323 ได้ตลอด 24 ชั่วโมง"
+    ],
+    ideas: ["กินข้าวให้ครบสามมื้อ", "ร้องไห้ได้ ไม่ต้องกลั้น", "นอนให้พอคืนนี้"]
+  },
+  lonely: {
+    label: "เหงา", color: "#d9705f", glow: "#f8ddd4", say: "เหงาจังเลยยาย",
+    outfit: "apron", pose: "bowl", face: "gentle",
+    react: [
+      "เหงาเหรอ มากินข้าวกับยายก่อน ยายเพิ่งทำกับข้าวเสร็จพอดี",
+      "มานั่งกินข้าวด้วยกันนะลูก ยายทำแกงจืดที่หลานชอบไว้",
+      "เหงาก็มาหายายสิลูก ยายตักข้าวรอไว้แล้ว"
+    ],
+    msgs: [
+      "กินข้าวให้อิ่มนะ หลานไม่ได้อยู่คนเดียว ยายอยู่ตรงนี้",
+      "ถึงจะอยู่ไกลกัน ยายก็คิดถึงหลานทุกวันนะลูก",
+      "ลองทักเพื่อนสักคนดูสิลูก บางทีเขาก็รอให้เราทักอยู่เหมือนกัน",
+      "อยู่คนเดียวได้ แต่ไม่ต้องเหงาคนเดียวนะ",
+      "โทรหาคนที่บ้านบ้างนะ เสียงหลานทำให้เขามีความสุขได้ทั้งวัน",
+      "ออกไปร้านกาแฟ หรือเดินสวนสักหน่อย ได้เห็นผู้คน ใจจะอุ่นขึ้น",
+      "ยายเองก็เคยเหงานะลูก แต่ทุกครั้งที่นึกถึงหลาน ใจยายก็อุ่นขึ้น",
+      "หลานเป็นคนน่ารัก ใครได้รู้จักก็โชคดี อย่าลืมข้อนี้นะ"
+    ],
+    ideas: ["ทักเพื่อนสักคน", "โทรหาคนที่บ้าน", "ออกไปเดินที่ที่มีผู้คน"]
+  },
+  cranky: {
+    label: "หงุดหงิด", color: "#5fa58f", glow: "#d7ece4", say: "หงุดหงิดมากเลยยาย",
+    outfit: "cool", pose: "fan", face: "calm",
+    react: [
+      "ใครทำหลานยายหงุดหงิดเนี่ย มา ยายพัดให้ เย็น ๆ ก่อนนะ",
+      "ร้อนใจมาเหรอลูก นั่งลงก่อน ยายพัดให้นะ",
+      "โอ้โห หน้าบึ้งมาเลย มา ๆ ยายพัดให้หายร้อน"
+    ],
+    msgs: [
+      "ใจเย็น ๆ นะลูก ร้อนใจเดี๋ยวก็ค่อย ๆ เย็นลง",
+      "โกรธได้ แต่อย่าเพิ่งตัดสินใจอะไรตอนนี้ นับหนึ่งถึงสิบกับยายก่อน",
+      "ดื่มน้ำเย็น ๆ สักแก้ว ล้างหน้าสักหน่อย แล้วค่อยว่ากันใหม่",
+      "บางคนบางเรื่องไม่คุ้มให้หลานเสียใจทั้งวันหรอก",
+      "เดินออกไปสูดอากาศสักห้านาที เรื่องมันจะเล็กลงเอง",
+      "ยายรู้ว่าหลานเป็นคนดี วันนี้แค่เจอเรื่องกวนใจเท่านั้นเอง",
+      "ความโกรธเหมือนถ่านร้อน ถือไว้นาน มือเราเองที่พองนะลูก",
+      "พรุ่งนี้มองย้อนกลับมา เรื่องวันนี้อาจทำให้หลานหัวเราะได้ก็ได้"
+    ],
+    ideas: ["นับหนึ่งถึงสิบก่อนตอบ", "ดื่มน้ำเย็น ๆ", "เดินสูดอากาศ 5 นาที"]
+  }
+};
+
+/* One quote every morning, none repeated until the whole list has been used */
+const QUOTES = [
+  "ช้าไม่เป็นไร ขอแค่ไม่หยุด", "วันนี้แค่รอดก็เก่งแล้ว", "เหนื่อยได้ พักได้ แต่อย่าทิ้งฝัน",
+  "คนที่ใช่จะอยู่ คนที่ไม่ใช่จะสอน", "ไม่ต้องเก่งที่สุด แค่เก่งกว่าเมื่อวาน", "โฟกัสที่ตัวเอง แล้วทุกอย่างจะดีเอง",
+  "บางวันก็แค่ต้องชาร์จแบต ไม่ได้แปลว่าแพ้", "ใจฟูได้ ไม่ต้องรอใครมาเติม", "ปล่อยวางสิ่งที่ควบคุมไม่ได้ แล้วจะเบาขึ้นเยอะ",
+  "ชีวิตไม่ใช่การแข่ง ถึงก่อนไม่ได้แปลว่าชนะ", "ตื่นมาแล้ว ถือว่าได้โอกาสใหม่อีกหนึ่งวัน",
+  "ไม่มีใครเห็นตอนเราสู้ แต่ทุกคนจะเห็นตอนเราสำเร็จ", "อย่าให้ความคิดคนอื่นมากำหนดคุณค่าของเรา",
+  "ค่อย ๆ เป็น ค่อย ๆ ไป เดี๋ยวก็ถึง", "เป็นตัวเองนั่นแหละ ดีที่สุดแล้ว", "ล้มได้ก็ลุกได้ แค่อาจต้องนั่งพักแป๊บนึง",
+  "อย่าเพิ่งยอมแพ้ บทที่ดีที่สุดอาจยังมาไม่ถึง", "ทำวันนี้ให้ดี พรุ่งนี้ค่อยว่ากัน",
+  "ความพยายามไม่เคยทรยศใคร แค่บางทีมันมาช้าหน่อย", "เลิกเปรียบเทียบเมื่อไหร่ ใจจะสงบเมื่อนั้น", "เราไม่ต้องชนะทุกวัน แค่อย่าแพ้ใจตัวเอง",
+  "น้ำหยดลงหินทุกวัน หินยังกร่อน", "ข้าวทุกเม็ดมาจากความตั้งใจ ชีวิตก็เหมือนกัน",
+  "ต้นไม้ใหญ่ก็เริ่มจากเมล็ดเล็ก ๆ", "ฝนตกแล้วฟ้าก็ต้องสว่าง", "ใจดีกับคนอื่นแล้ว อย่าลืมใจดีกับตัวเองด้วย",
+  "ความสุขอยู่ในเรื่องเล็ก ๆ ที่เรามองข้าม", "ยิ้มให้ได้ในวันที่ยาก นั่นแหละคนเก่งจริง",
+  "ไม่ต้องรีบบานก่อนใคร ดอกไม้แต่ละดอกมีฤดูของมัน", "ทำดีวันละนิด ชีวิตก็ดีขึ้นทีละหน่อย",
+  "เมื่อวานคือบทเรียน วันนี้คือของขวัญ", "คนที่เดินช้าแต่ไม่หยุด ไปได้ไกลกว่าคนที่วิ่งแล้วเลิก",
+  "อย่าเอาความเหนื่อยวันนี้ ไปตัดสินทั้งชีวิต", "ความกล้าคือการก้าวไป ทั้งที่ใจยังสั่น",
+  "บ้านคือที่ที่มีคนรอเรากลับเสมอ", "ใจที่สงบ คือบ้านที่พกไปได้ทุกที่", "ขอบคุณตัวเองที่ยังสู้มาถึงวันนี้",
+  "ทุกเช้าคือหน้ากระดาษใหม่ เขียนอะไรดี ๆ ลงไปนะ", "ทะเลเรียบไม่เคยสร้างกะลาสีเก่ง",
+  "คนที่รักเราจริง ไม่ต้องการให้เราสมบูรณ์แบบ", "พักให้เป็น แล้วจะไปได้นาน",
+  "ความผิดพลาดไม่ได้บอกว่าเราเป็นใคร มันแค่บอกว่าเรากำลังเรียนรู้"
+];
+
+/* Grandma's everyday lines — each picked fresh so she rarely says the same thing twice */
+const LINES = {
+  morning: [
+    ["อรุณสวัสดิ์จ้ะหลานรัก ตื่นแล้วเหรอ", "เมื่อคืนนอนหลับสบายไหมลูก ยายต้มข้าวต้มร้อน ๆ ไว้ให้แล้วนะ"],
+    ["ตื่นแล้วเหรอลูก ยายรออยู่ตั้งแต่ไก่ขันแล้ว", "ล้างหน้าล้างตาแล้วมานั่งกับยายก่อน ยายชงโอวัลตินไว้ให้แก้วนึง"],
+    ["มาแล้วเหรอหลานยาย เช้านี้อากาศดีนะ", "ยายเปิดหน้าต่างรับแดดไว้ให้แล้ว หายใจลึก ๆ สักทีสิลูก"],
+    ["หลานรักของยาย ตื่นมาเจอกันอีกวันแล้วนะ", "ยายดีใจทุกครั้งที่ได้เห็นหน้าหลานตอนเช้า"],
+    ["อรุณสวัสดิ์จ้ะลูก เช้านี้ยายตื่นมารดน้ำต้นไม้รอหลานเลย", "กินอะไรรองท้องก่อนออกจากบ้านด้วยนะ ยายเป็นห่วง"]
+  ],
+  noon: [
+    ["มาแล้วเหรอลูก กินข้าวเที่ยงหรือยัง", "อย่ากินแต่ของง่าย ๆ นะ ยายเป็นห่วงสุขภาพหลาน"],
+    ["อ้าว หลานยายแวะมาตอนกลางวัน", "พักสายตาจากงานสักหน่อยนะลูก ดื่มน้ำด้วย"],
+    ["บ่ายแล้วนะลูก เหนื่อยหรือยัง", "นั่งพักกับยายสักห้านาที แล้วค่อยไปลุยต่อ"]
+  ],
+  evening: [
+    ["กลับมาแล้วเหรอลูก วันนี้เหนื่อยไหม", "มานั่งพักกับยายก่อน ยายรอฟังเรื่องของหลานอยู่"],
+    ["เย็นแล้วนะหลาน กินข้าวเย็นหรือยัง", "วันนี้หลานทำได้ดีแล้วนะ ไม่ว่าจะเจออะไรมา"],
+    ["หลานยายกลับบ้านแล้ว ยายดีใจจัง", "อาบน้ำอุ่น ๆ แล้วมาคุยกับยายนะ"]
+  ],
+  late: [
+    ["ยังไม่นอนอีกเหรอหลาน ดึกแล้วนะลูก", "นอนไม่หลับเหรอ มีอะไรค้างอยู่ในใจหรือเปล่า เล่าให้ยายฟังได้นะ"],
+    ["ดึกป่านนี้แล้ว ยายเป็นห่วงนะลูก", "พักผ่อนบ้างนะ ร่างกายหลานสำคัญกับยายมาก"]
+  ],
+  quoteIntro: ["ยายมีคำคมเช้านี้มาฝากนะ", "คำคมประจำวันนี้ของยายจ้ะ", "เมื่อวานยายเห็นคำนี้แล้วนึกถึงหลานเลย", "ยายจดคำนี้ไว้ให้หลานโดยเฉพาะ", "ก่อนเริ่มวัน ยายขอฝากคำนี้ไว้ในใจหลานนะ"],
+  askMood: ["วันนี้ใจเป็นยังไงบ้างลูก บอกยายหน่อย", "ตอนนี้ในใจหลานรู้สึกยังไง เล่าให้ยายฟังได้ทุกเรื่องนะ", "บอกยายหน่อยสิ วันนี้ใจหลานเป็นแบบไหน", "ยายอยากรู้ว่าหลานรู้สึกยังไงบ้าง กับยายไม่ต้องฝืนนะลูก"],
+  askAgain: ["ได้สิลูก ตอนนี้ใจเป็นยังไงบ้าง", "เล่ามาเลยลูก ยายฟังอยู่", "ยายว่างเสมอสำหรับหลาน ตอนนี้รู้สึกยังไงจ้ะ"],
+  thanks: ["จ้ะ ยายรักหลานนะ", "ไม่ต้องขอบคุณหรอกลูก ยายเต็มใจเสมอ", "ยายดีใจที่ได้คุยกับหลานนะ", "จ้ะลูก รักหลานที่สุดเลย"],
+  askPromise: ["วันนี้จะทำอะไรดี ๆ ให้ตัวเองสักอย่างไหมลูก เรื่องเดียวพอ", "ยายอยากให้หลานใจดีกับตัวเองสักเรื่องวันนี้ จะทำอะไรดีลูก", "เลือกทำอะไรดี ๆ ให้ตัวเองสักอย่างนะ ยายจะช่วยจำไว้ให้"],
+  promiseOk: ["ดีมากเลยลูก ยายจำไว้แล้วนะ", "เยี่ยมเลย ยายเชื่อว่าหลานทำได้", "ยายภูมิใจตั้งแต่หลานตั้งใจแล้วนะ"],
+  skip: ["ไม่เป็นไรลูก ไม่ต้องรีบ", "ไม่ต้องคิดตอนนี้ก็ได้ วันนี้แค่ดูแลตัวเองดี ๆ ก็พอ"],
+  hugAsk: ["มา มากอดยายก่อนออกจากบ้าน กดค้างที่ปุ่มข้างล่างไว้นะ", "ก่อนไป ขอยายกอดทีนึงนะลูก กดค้างที่ปุ่มข้างล่างเลย", "มานี่มา ให้ยายกอดเติมพลังก่อน กดค้างที่ปุ่มข้างล่างนะ"],
+  hugged: ["ยายกอดหลานไว้แล้วนะ อุ่นไหมลูก", "กอดแน่น ๆ เลย ยายรักหลานที่สุด", "ได้กอดหลานแล้วยายก็ชื่นใจ"],
+  sendOff: ["ไปเถอะลูก ไปใช้ชีวิตให้เต็มที่ เดินทางปลอดภัยนะ", "ออกไปเจอโลกได้แล้วลูก ยายเป็นกำลังใจให้อยู่ตรงนี้", "ไปเถอะลูก ถ้าเหนื่อยเมื่อไหร่ กลับมาหายายได้เสมอ"],
+  bye: ["จ้า เย็นนี้กลับมาเล่าให้ยายฟังนะ", "จ้ะ ดูแลตัวเองดี ๆ นะลูก ยายรออยู่", "ไปดีมาดีนะลูก กินข้าวให้ตรงเวลาด้วยล่ะ"],
+  kept: ["เก่งมากเลยหลานยาย ยายภูมิใจในตัวหลานนะ", "เห็นไหม หลานทำได้ ยายรู้อยู่แล้ว", "ยายดีใจจนยิ้มไม่หุบเลย เก่งมากลูก"],
+  listen: ["ยายฟังอยู่นะลูก เล่าต่อสิ", "อืม ยายเข้าใจนะ หลานเก่งมากแล้วที่บอกยาย", "ไม่เป็นไรนะลูก ค่อย ๆ ไป ยายอยู่ตรงนี้เสมอ", "กินข้าวหรือยังลูก ท้องอิ่มแล้วใจจะสบายขึ้น", "ขอบใจนะที่เล่าให้ยายฟัง ยายรักหลานนะ", "ยายอยู่ข้างหลานเสมอ ไม่ว่าเรื่องอะไรก็ตาม"]
+};
+const PLATFORMS = {
+  ig:     { name: "Instagram Stories", top: 250, bottom: 290, right: 96,
+            steps: ["<b>กดค้างที่รูป</b> แล้วเลือกบันทึกรูปภาพ", "เปิด <b>Instagram</b> ปัดไปทางขวา หรือกด + แล้วเลือก <b>สตอรี่</b>", "เลือกรูปนี้จากคลังรูปภาพ", "กด <b>สตอรี่ของคุณ</b>"] },
+  tiktok: { name: "TikTok Stories", top: 220, bottom: 480, right: 190,
+            steps: ["<b>กดค้างที่รูป</b> แล้วเลือกบันทึกรูปภาพ", "เปิด <b>TikTok</b> แล้วกดปุ่ม <b>+</b>", "กด <b>อัปโหลด</b> แล้วเลือกรูปนี้", "เลือกโพสต์เป็น <b>สตอรี่</b>"] },
+  fb:     { name: "Facebook Stories", top: 240, bottom: 300, right: 96,
+            steps: ["<b>กดค้างที่รูป</b> แล้วเลือกบันทึกรูปภาพ", "เปิด <b>Facebook</b> แล้วกด <b>สร้างสตอรี่</b>", "เลือกรูปนี้จากคลังรูปภาพ", "กด <b>แชร์ไปยังสตอรี่</b>"] }
+};
+
+/* ---------- Grandma Nuan (full colour, outfit + pose + face) ---------- */
+const O = "#4a3428", SKIN = "#f2cfb1", HAIR = "#d6d1ca", ROSE = "#ee9c8f", GOLD = "#e3a93c", JADE = "#7db596";
+const OUTFITS = {
+  home:     { top: "#fbf7ef", sleeve: "#fbf7ef", lace: true,  sarong: ["#7a4e33", "#d7a967"] },
+  floral:   { top: "url(#flo-ID)", sleeve: "#f5cf5e", sarong: ["#4f7d5b", "#bcdcae"], flower: true },
+  cardigan: { top: "#fbf7ef", sleeve: "#d8c09b", lace: true, sarong: ["#6b5b4b", "#c8b493"], cardigan: "#d8c09b" },
+  shawl:    { top: "#c3dbee", sleeve: "#c3dbee", sarong: ["#3d5a80", "#a8c1dc"], shawl: "#f3e8d3" },
+  sweater:  { top: "#cbc1e6", sleeve: "#cbc1e6", sarong: ["#5b4f7a", "#b2a8d3"], knit: true },
+  apron:    { top: "#c9504a", sleeve: "#c9504a", sarong: ["#7a4e33", "#d7a967"], apron: true },
+  cool:     { top: "#d3e9d6", sleeve: "#d3e9d6", lace: true, sarong: ["#2f6b5e", "#9ccbb9"] }
+};
+let uid = 0;
+const hand = (x, y, bangle) => (bangle ? `<circle cx="${x}" cy="${y}" r="8.5" fill="none" stroke="${JADE}" stroke-width="3"/>` : "") + `<circle cx="${x}" cy="${y}" r="6.5" fill="${SKIN}" stroke="${O}" stroke-width="2.2"/>`;
+const sleeve = (d, c) => `<path d="${d}" stroke="${O}" stroke-width="16" fill="none" stroke-linecap="round"/><path d="${d}" stroke="${c}" stroke-width="11.6" fill="none" stroke-linecap="round"/>`;
+const spark = (x, y, a) => `<path class="${a ? "gm-spark" : ""}" d="M${x} ${y - 7}Q${x + 1.5} ${y - 1.5} ${x + 7} ${y}Q${x + 1.5} ${y + 1.5} ${x} ${y + 7}Q${x - 1.5} ${y + 1.5} ${x - 7} ${y}Q${x - 1.5} ${y - 1.5} ${x} ${y - 7}Z" fill="${GOLD}"/>`;
+const heartAt = (x, y, s) => `<path transform="translate(${x} ${y}) scale(${s})" d="M0 6C-7 1-10-3-10-7a5 5 0 0 1 10-2 5 5 0 0 1 10 2c0 4-3 8-10 13z" fill="${ROSE}" stroke="${O}" stroke-width="${2 / s}"/>`;
+const PROPS = {
+  tea: a => `<path class="${a ? "gm-steam" : ""}" d="M96 122 q-3 -5 0 -10 M104 122 q-3 -5 0 -10" stroke="${O}" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M87 126 H113 L110 143 Q100 148 90 143 Z" fill="#fff" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M90 132 H110" stroke="${JADE}" stroke-width="2.4"/>`,
+  bowl: () => `<path d="M106 124 L124 106 M110 126 L127 110" stroke="#9a6a43" stroke-width="3" stroke-linecap="round"/><path d="M88 128 Q100 115 112 128 Z" fill="#fff" stroke="${O}" stroke-width="2"/><path d="M84 128 H116 Q114 146 100 146 Q86 146 84 128 Z" fill="#fff" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M87 134 H113" stroke="#5f86b3" stroke-width="2.4"/>`,
+  heart: () => heartAt(100, 132, 1.7)
+};
+// Arms: [sleeve path, hand x, hand y] for left and right
+const ARMS = {
+  rest:  [["M72 118 Q62 142 68 158", 68, 162], ["M128 118 Q138 142 132 158", 132, 162]],
+  wave:  [["M72 118 Q62 142 68 158", 68, 162], ["M130 116 Q154 104 154 82", 154, 77], "wave"],
+  cheer: [["M70 116 Q48 104 46 82", 46, 77], ["M130 116 Q152 104 154 82", 154, 77]],
+  front: [["M72 120 Q70 140 86 142", 89, 142], ["M128 120 Q130 140 114 142", 111, 142]],
+  chest: [["M72 118 Q52 122 48 104", 48, 99], ["M128 120 Q124 134 110 128", 107, 127]],
+  open:  [["M72 118 Q48 110 42 90", 42, 85], ["M128 118 Q152 110 158 90", 158, 85]],
+  fan:   [["M72 118 Q62 142 68 158", 68, 162], ["M128 118 Q150 114 148 98", 148, 94]],
+  hug:   [["M70 118 Q64 148 104 142", 106, 142], ["M130 118 Q136 148 96 142", 94, 142]]
+};
+const POSES = { rest: ["rest"], wave: ["wave"], cheer: ["cheer", null, "spark"], tea: ["front", "tea"], bowl: ["front", "bowl"], chest: ["chest"], open: ["open"], fan: ["fan", null, "fan"], hug: ["hug", "heart"] };
+const BROW_SOFT = `<path d="M82 63 Q88 60 94 63 M106 63 Q112 60 118 63" stroke="${O}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".6"/>`;
+const BROW_CARE = `<path d="M82 66 L93 62 M107 62 L118 66" stroke="${O}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".7"/>`;
+const SMILE_EYES = `<path d="M83 77 Q88 71 93 77 M107 77 Q112 71 117 77" stroke="${O}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+const FACES = {
+  smile:   () => BROW_SOFT + SMILE_EYES + `<path d="M92 86 Q100 96 108 86 Z" fill="#8a3b33" stroke="${O}" stroke-width="1.6" stroke-linejoin="round"/>`,
+  gentle:  () => BROW_SOFT + SMILE_EYES + `<path d="M94 87 Q100 92 106 87" stroke="${O}" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
+  concern: a => BROW_CARE + `<g class="${a ? "gm-blink" : ""}"><circle cx="88" cy="76" r="2.8" fill="${O}"/><circle cx="112" cy="76" r="2.8" fill="${O}"/></g><path d="M95 89 Q100 91 105 89" stroke="${O}" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
+  soothe:  () => BROW_CARE + `<path d="M83 75 Q88 80 93 75 M107 75 Q112 80 117 75" stroke="${O}" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M95 88 Q100 92 105 88" stroke="${O}" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
+  calm:    () => BROW_SOFT + `<path d="M83 76 H93 M107 76 H117" stroke="${O}" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M95 87 Q100 91 105 87" stroke="${O}" stroke-width="2.2" fill="none" stroke-linecap="round"/>`
+};
+function grandmaSVG({ outfit = "home", pose = "wave", face = "smile" } = {}, anim = true) {
+  const id = "g" + (++uid), of = OUTFITS[outfit], [armKey, prop, extra] = POSES[pose], arms = ARMS[armKey];
+  const top = of.top.replace("ID", id);
+  const armSvg = (i, bangle) => { const [d, x, y] = arms[i]; return sleeve(d, of.sleeve) + hand(x, y, bangle); };
+  const right = arms[2] === "wave" && anim ? `<g class="gm-wave">${armSvg(1)}</g>` : armSvg(1);
+  const fan = extra === "fan" ? `<g class="${anim ? "gm-fan" : ""}"><path d="M148 94 L128 66 A26 26 0 0 1 168 66 Z" fill="#d9574a" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M148 94 L138 62 M148 94 L148 60 M148 94 L158 62" stroke="#f4c3ad" stroke-width="1.6"/></g>` : "";
+  const sparks = extra === "spark" ? spark(28, 54, anim) + spark(172, 50, anim) + spark(20, 100, anim) : "";
+  return `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ยายนวล">
+  <defs>
+    <pattern id="sar-${id}" width="22" height="16" patternUnits="userSpaceOnUse"><rect width="22" height="16" fill="${of.sarong[0]}"/><path d="M0 8 Q5.5 3 11 8 T22 8" stroke="${of.sarong[1]}" stroke-width="2" fill="none"/><circle cx="11" cy="14" r="1.6" fill="${of.sarong[1]}"/></pattern>
+    <pattern id="flo-${id}" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#f5cf5e"/><circle cx="5" cy="5" r="2.6" fill="#fff"/><circle cx="5" cy="5" r="1.1" fill="#e5806a"/><circle cx="14" cy="13" r="2.6" fill="#f08f7c"/><circle cx="14" cy="13" r="1" fill="#fff"/></pattern>
+    <pattern id="gin-${id}" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#fff"/><rect width="5" height="10" fill="#e7a3a0" opacity=".55"/><rect width="10" height="5" fill="#e7a3a0" opacity=".55"/></pattern>
+  </defs>
+  <ellipse cx="100" cy="242" rx="50" ry="6" fill="#000" opacity=".1"/>
+  <g class="${anim ? "gm-body" : ""}">
+    <ellipse cx="88" cy="237" rx="11" ry="5" fill="#9a6a43" stroke="${O}" stroke-width="2"/><ellipse cx="112" cy="237" rx="11" ry="5" fill="#9a6a43" stroke="${O}" stroke-width="2"/>
+    <path d="M71 160 L67 234 Q100 240 133 234 L129 160 Z" fill="url(#sar-${id})" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M70 168 Q100 175 130 168" stroke="${O}" stroke-width="1.6" fill="none" opacity=".5"/>
+    <path d="M66 168 C62 134 74 104 100 102 C126 104 138 134 134 168 Q100 177 66 168 Z" fill="${top}" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/>
+    ${of.knit ? `<path d="M72 150 Q100 157 128 150 M70 160 Q100 168 130 160" stroke="${O}" stroke-width="1.2" fill="none" opacity=".3"/><path d="M67 165 Q100 175 133 165" stroke="#a99fc9" stroke-width="4" fill="none"/>` : ""}
+    ${of.lace ? `<path d="M84 106 Q100 126 116 106" stroke="${O}" stroke-width="1.6" fill="none"/><path d="M85 109 Q100 129 115 109" stroke="#e8d8c0" stroke-width="3" stroke-dasharray="1 3.5" stroke-linecap="round" fill="none"/>` : `<path d="M88 104 Q100 116 112 104" stroke="${O}" stroke-width="1.6" fill="none"/>`}
+    ${of.cardigan ? `<path d="M66 168 C62 134 74 104 92 103 L95 174 Q78 174 66 168 Z" fill="${of.cardigan}" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M134 168 C138 134 126 104 108 103 L105 174 Q122 174 134 168 Z" fill="${of.cardigan}" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><circle cx="93" cy="130" r="2" fill="${O}"/><circle cx="93" cy="148" r="2" fill="${O}"/>` : ""}
+    ${of.shawl ? `<path d="M70 114 C90 128 112 150 124 172 L108 176 C98 154 84 136 64 128 Z" fill="${of.shawl}" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M110 176 l-2 8 M116 175 l0 8 M122 173 l2 8" stroke="${O}" stroke-width="1.4"/>` : ""}
+    ${of.apron ? `<path d="M84 104 L88 126 M116 104 L112 126" stroke="${O}" stroke-width="2"/><path d="M80 126 H120 L126 198 Q100 204 74 198 Z" fill="url(#gin-${id})" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M88 160 H112 V176 H88 Z" fill="#fff" stroke="${O}" stroke-width="1.6" opacity=".9"/>` : ""}
+    <path d="M93 96 h14 v10 h-14z" fill="${SKIN}"/>
+    <circle cx="100" cy="35" r="12" fill="${HAIR}" stroke="${O}" stroke-width="2.2"/>
+    <path d="M110 30 L126 22" stroke="${GOLD}" stroke-width="3" stroke-linecap="round"/><circle cx="127" cy="21" r="4" fill="${ROSE}" stroke="${O}" stroke-width="1.8"/>
+    ${of.flower ? `<g transform="translate(82 30)"><circle r="7" fill="#fff" stroke="${O}" stroke-width="1.6"/><circle r="3" fill="${GOLD}"/></g>` : ""}
+    <circle cx="70" cy="76" r="5.5" fill="${SKIN}" stroke="${O}" stroke-width="2.2"/><circle cx="130" cy="76" r="5.5" fill="${SKIN}" stroke="${O}" stroke-width="2.2"/>
+    <circle cx="100" cy="72" r="30" fill="${SKIN}" stroke="${O}" stroke-width="2.2"/>
+    <path d="M70.5 72 C68 48 82 40 100 40 C118 40 132 48 129.5 72 C125 60 114 54 104 56 C100 51 93 51 89 55 C80 56 73 62 70.5 72 Z" fill="${HAIR}" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M84 47 Q91 49 95 54 M114 47 Q110 50 107 55" stroke="${O}" stroke-width="1.3" fill="none" opacity=".3"/>
+    <circle cx="80" cy="85" r="5.5" fill="${ROSE}" opacity=".5"/><circle cx="120" cy="85" r="5.5" fill="${ROSE}" opacity=".5"/>
+    <path d="M76 75 l-4 -2 M76 79 l-4 1 M124 75 l4 -2 M124 79 l4 1" stroke="${O}" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>
+    ${FACES[face](anim)}
+    <g fill="none" stroke="${O}" stroke-width="1.5"><circle cx="88" cy="76" r="9.5"/><circle cx="112" cy="76" r="9.5"/><path d="M97.5 75 Q100 72.5 102.5 75"/></g>
+    ${fan}
+    ${sleeve(arms[0][0], of.sleeve)}${arms[2] === "wave" ? "" : sleeve(arms[1][0], of.sleeve)}
+    ${prop ? PROPS[prop](anim) : ""}
+    ${hand(arms[0][1], arms[0][2], true)}${arms[2] === "wave" ? right : hand(arms[1][1], arms[1][2], false)}
+    ${sparks}
+  </g></svg>`;
+}
+
+/* ---------- State ---------- */
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("sc:" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem("sc:" + k, JSON.stringify(v)); } catch (e) {} }
+};
+const $ = id => document.getElementById(id);
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const now = new Date();
+const dayKey = d => d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+const today = dayKey(now);
+const dayNum = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 864e5) + now.getFullYear() * 366;
+function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2200); }
+
+$("calDay").textContent = now.getDate();
+$("calMonth").textContent = now.toLocaleDateString("th-TH", { month: "short" });
+let visits = store.get("visits", []);
+if (!visits.includes(today)) { visits.push(today); visits = visits.slice(-60); store.set("visits", visits); }
+let streak = 0; { const c = new Date(now); while (visits.includes(dayKey(c))) { streak++; c.setDate(c.getDate() - 1); } }
+$("streak").innerHTML = streak > 1 ? `มาหายาย <b>${streak}</b> วันติด` : "เช้าแรกที่บ้านยาย";
+
+let data = (() => { const d = store.get("chat", {}); return d.day === today ? d : { day: today, log: [] }; })();
+if (data.mood && !MOODS[data.mood]) delete data.mood;
+const save = () => { data.log = data.log.slice(-60); store.set("chat", data); };
+const M = () => MOODS[data.mood] || null;
+
+/* ---------- Grandma on stage ---------- */
+let look = { outfit: "home", pose: "wave", face: "smile" };
+function setLook(next) {
+  look = { ...look, ...next };
+  const el = $("grandma"); el.innerHTML = grandmaSVG(look); el.classList.remove("swap"); void el.offsetWidth; el.classList.add("swap");
+  $("avatar").innerHTML = grandmaSVG({ ...look, pose: "rest" }, false);
+  document.documentElement.style.setProperty("--mood", M() ? M().glow : "#f6e1c8");
+}
+const moodLook = () => M() ? { outfit: M().outfit, pose: M().pose, face: M().face } : { outfit: "home", pose: "rest", face: "gentle" };
+function hearts() {
+  if (reduced) return;
+  for (let i = 0; i < 10; i++) {
+    const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "-11 -10 22 20"); s.setAttribute("class", "heart");
+    s.innerHTML = `<path d="M0 6C-7 1-10-3-10-7a5 5 0 0 1 10-2 5 5 0 0 1 10 2c0 4-3 8-10 13z" fill="${i % 3 ? ROSE : GOLD}"/>`;
+    s.style.left = (32 + Math.random() * 36) + "%"; s.style.top = (40 + Math.random() * 30) + "%"; s.style.animationDelay = (i * .12) + "s";
+    $("hearts").appendChild(s); setTimeout(() => s.remove(), 2800);
+  }
+  if (navigator.vibrate) try { navigator.vibrate(40); } catch (e) {}
+}
+
+/* ---------- Chat ---------- */
+function bubble(m) {
+  const d = document.createElement("div");
+  d.className = "msg " + m.who + (m.quote ? " quote" : "");
+  d.textContent = m.text;
+  $("log").appendChild(d);
+  $("log").scrollTop = $("log").scrollHeight;
+}
+function add(who, text, extra = {}) { const m = { who, text, ...extra }; data.log.push(m); save(); bubble(m); }
+let busy = false;
+async function say(text, extra) {
+  const t = document.createElement("div"); t.className = "typing"; t.innerHTML = "<i></i><i></i><i></i>";
+  $("log").appendChild(t); $("log").scrollTop = $("log").scrollHeight;
+  await wait(reduced ? 200 : Math.min(1600, 450 + text.length * 16));
+  t.remove(); add("g", text, extra);
+}
+const user = text => add("u", text);
+
+/* Quick replies for each step of the morning */
+function setStep(step) { data.step = step; save(); renderReplies(); }
+function chip(label, fn, opts = {}) {
+  const b = document.createElement("button"); b.type = "button"; b.className = "reply" + (opts.main ? " main" : "");
+  if (opts.dot) b.innerHTML = `<span class="dot" style="background:${opts.dot}"></span>`;
+  b.append(label);
+  b.onclick = async () => { if (busy) return; busy = true; $("replies").innerHTML = ""; try { await fn(); } finally { busy = false; renderReplies(); } };
+  return b;
+}
+function renderReplies() {
+  const box = $("replies"); box.innerHTML = "";
+  if (busy) return;
+  const s = data.step;
+  if (s === "mood") Object.entries(MOODS).forEach(([k, m]) => box.append(chip(m.label, () => pickMood(k), { dot: m.color })));
+  if (s === "cheer") {
+    box.append(chip("ยายพูดอีกหน่อย", moreWords), chip("ส่งคำยายลงสตอรี่", openShare), chip("ขอบคุณนะยาย", thanks, { main: true }));
+  }
+  if (s === "promise") {
+    (M() ? M().ideas : MOODS.lonely.ideas).forEach(t => box.append(chip(t, () => makePromise(t))));
+    box.append(chip("ไว้ค่อยคิดนะยาย", skipPromise));
+  }
+  if (s === "hug") box.append(holdButton());
+  if (s === "done") box.append(chip("ไปแล้วนะยาย", leave, { main: true }), chip("ส่งคำยายลงสตอรี่", openShare));
+  if (s === "after") {
+    if (data.promise && !data.done) box.append(chip("ทำตามที่สัญญาแล้วยาย", keptPromise, { main: true }));
+    box.append(chip("อยากเล่าให้ยายฟังอีก", askMood), chip("ส่งคำยายลงสตอรี่", openShare));
+  }
+}
+
+/* Script */
+// Pick a line grandma hasn't used lately. Remembers what she said across days; starts over only when every line has been used.
+function fresh(key, arr) {
+  let used = store.get("used:" + key, []).filter(i => i < arr.length);
+  if (used.length >= arr.length) used = used.slice(-1);
+  const pool = arr.map((_, i) => i).filter(i => !used.includes(i));
+  const i = pool[Math.floor(Math.random() * pool.length)];
+  used.push(i); store.set("used:" + key, used);
+  return arr[i];
+}
+function todaysQuote() {
+  if (!data.dailyQuote) { data.dailyQuote = fresh("quotes", QUOTES); save(); }
+  return data.dailyQuote;
+}
+async function greet() {
+  const h = now.getHours();
+  const slot = h < 5 ? "late" : h < 11 ? "morning" : h < 17 ? "noon" : h < 22 ? "evening" : "late";
+  busy = true;
+  setLook({ outfit: "home", pose: "wave", face: "smile" });
+  for (const l of fresh("greet-" + slot, LINES[slot])) await say(l);
+  await say(fresh("quoteIntro", LINES.quoteIntro));
+  data.quote = todaysQuote(); save();
+  await say("“" + data.quote + "”", { quote: true });
+  await say(fresh("askMood", LINES.askMood));
+  busy = false; setStep("mood");
+}
+async function askMood() { user("อยากเล่าให้ยายฟังอีก"); await say(fresh("askAgain", LINES.askAgain)); data.step = "mood"; save(); }
+async function pickMood(k, typed) {
+  if (!typed) user(MOODS[k].say);
+  data.mood = k; save();
+  setLook(moodLook());
+  await say(fresh("react-" + k, MOODS[k].react));
+  data.quote = fresh("msg-" + k, MOODS[k].msgs); save();
+  await say(data.quote, { quote: true });
+  data.step = "cheer"; save();
+}
+async function moreWords() {
+  user("ยายพูดอีกหน่อย");
+  const k = data.mood || "happy";
+  data.quote = fresh("msg-" + k, MOODS[k].msgs); save();
+  await say(data.quote, { quote: true });
+}
+async function thanks() {
+  user("ขอบคุณนะยาย");
+  await say(fresh("thanks", LINES.thanks));
+  setLook({ pose: "rest", face: "gentle" });
+  await say(fresh("askPromise", LINES.askPromise) + " เลือกเอา หรือพิมพ์บอกยายก็ได้");
+  data.step = "promise"; save();
+}
+async function makePromise(t, typed) {
+  if (!typed) user("วันนี้จะ" + t);
+  data.promise = t; data.done = false; save();
+  await say(fresh("promiseOk", LINES.promiseOk));
+  await toHug();
+}
+async function skipPromise() { user("ไว้ค่อยคิดนะยาย"); await say(fresh("skip", LINES.skip)); await toHug(); }
+async function toHug() {
+  setLook({ pose: "open", face: "smile" });
+  await say(fresh("hugAsk", LINES.hugAsk));
+  data.step = "hug"; save();
+}
+async function hugged() {
+  data.hugged = true; save();
+  setLook({ pose: "hug", face: "gentle" }); hearts();
+  await say(fresh("hugged", LINES.hugged));
+  await say(fresh("sendOff", LINES.sendOff) + (data.promise ? ` แล้วอย่าลืม${data.promise}ล่ะ` : ""));
+  data.step = "done"; save();
+}
+async function leave() {
+  user("ไปแล้วนะยาย");
+  setLook({ pose: "wave", face: "smile" });
+  await say(fresh("bye", LINES.bye));
+  data.step = "after"; save();
+}
+async function keptPromise() {
+  user("ทำตามที่สัญญาแล้วยาย");
+  data.done = true; save();
+  setLook({ outfit: "floral", pose: "cheer", face: "smile" }); hearts();
+  await say(fresh("kept", LINES.kept));
+}
+
+/* Hold to hug */
+function holdButton() {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "hold"; b.setAttribute("aria-label", "กดค้างไว้เพื่อกอดยาย");
+  b.innerHTML = `<span class="fill"></span><span class="label">กดค้างไว้ กอดยาย</span><span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>`;
+  const fill = b.querySelector(".fill"); let start = 0, raf = 0, done = false;
+  const tick = () => {
+    const p = Math.min(1, (performance.now() - start) / 1300); fill.style.width = p * 100 + "%";
+    if (p >= 1 && !done) { done = true; busy = true; $("replies").innerHTML = ""; hugged().finally(() => { busy = false; renderReplies(); }); return; }
+    raf = requestAnimationFrame(tick);
+  };
+  const begin = e => { if (e) e.preventDefault(); if (done) return; cancelAnimationFrame(raf); start = performance.now(); raf = requestAnimationFrame(tick); };
+  const end = () => { cancelAnimationFrame(raf); if (!done) fill.style.width = "0"; };
+  b.addEventListener("pointerdown", begin);
+  ["pointerup", "pointerleave", "pointercancel"].forEach(ev => b.addEventListener(ev, end));
+  b.addEventListener("contextmenu", e => e.preventDefault());
+  b.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && !e.repeat) { e.preventDefault(); begin(); } });
+  b.addEventListener("keyup", e => { if (e.key === "Enter" || e.key === " ") end(); });
+  return b;
+}
+
+/* ---------- Free typing: grandma answers through Claude when this view allows it ---------- */
+let sample = null;
+(async () => { try { sample = window.claude ? await window.claude.use("sample") : null; } catch (e) { sample = null; } })();
+const RULES = `คุณคือ "ยายนวล" คุณยายชาวไทยวัย 75 ใจดี อบอุ่น อยู่บ้านต่างจังหวัด กำลังแชทกับหลานในแอพ "แสงเช้า" แอพให้กำลังใจตอนเช้า
+วิธีพูด: เรียกตัวเองว่า "ยาย" เรียกอีกฝ่ายว่า "หลาน" หรือ "ลูก" ใช้ภาษาพูดแบบยายไทย อบอุ่น เรียบง่าย ลงท้าย "นะลูก" "จ้ะ" ได้ ตอบสั้น 1–3 ประโยคเหมือนแชทจริง ไม่ใช้อีโมจิ ไม่ทำเป็นหัวข้อหรือรายการ
+พูดด้วยความรักและความใส่ใจจากใจยายจริง ๆ: รับฟังก่อน ไม่ตัดสิน สะท้อนสิ่งที่หลานเล่ามาให้รู้ว่ายายฟังอยู่ จำรายละเอียดที่หลานเล่าในบทสนทนาแล้วถามไถ่ต่อ ห่วงเรื่องกินอยู่ หลับนอน สุขภาพ และแนะนำเรื่องง่าย ๆ ในชีวิต เช่น กินข้าว พักผ่อน ดื่มน้ำ ออกไปรับแดด โทรหาคนที่รัก
+ห้ามพูดประโยคหรือสำนวนซ้ำกับที่ยายเคยพูดไปแล้วในบทสนทนา เลือกคำใหม่ทุกครั้งให้เป็นธรรมชาติเหมือนคนจริง
+ไม่วินิจฉัยโรค ไม่ให้คำแนะนำเฉพาะทางด้านการแพทย์ การเงิน หรือกฎหมาย ให้ชวนไปปรึกษาผู้รู้อย่างอ่อนโยน
+ถ้าหลานพูดถึงการทำร้ายตัวเอง อยากตาย หรืออยู่ในอันตราย ให้ตอบด้วยความห่วงใยจริงจัง บอกให้โทรสายด่วนสุขภาพจิต 1323 (ตลอด 24 ชั่วโมง) หรือ 1669 ถ้าฉุกเฉิน และชวนให้อยู่กับคนที่ไว้ใจ
+ถ้าหลานถามว่ายายเป็นคนจริงไหม ให้บอกตรง ๆ อย่างอ่อนโยนว่ายายเป็นตัวละครในแอพที่ AI ช่วยพูด แต่ห่วงหลานจริง ๆ
+ตอบเป็น JSON อย่างเดียว รูปแบบ {"reply": "ข้อความของยาย", "mood": "happy|tired|worried|sad|lonely|cranky|none"} โดย mood คือความรู้สึกของหลานจากข้อความล่าสุด ใช้ none ถ้าไม่ชัด`;
+const KEYWORDS = { tired: /เหนื่อย|ล้า|ง่วง|หมดแรง|เพลีย/, sad: /เศร้า|เสียใจ|ร้องไห้|ผิดหวัง|อกหัก/, lonely: /เหงา|คนเดียว|คิดถึง/, worried: /กังวล|เครียด|กลัว|ไม่สบายใจ|ตื่นเต้น/, cranky: /โกรธ|หงุดหงิด|โมโห|รำคาญ|หัวร้อน/, happy: /ดีใจ|มีความสุข|ใจฟู|สนุก|แฮปปี้|สดใส/ };
+const CRISIS = /อยากตาย|ฆ่าตัวตาย|ทำร้ายตัวเอง|ไม่อยากอยู่/;
+const detectMood = t => Object.keys(KEYWORDS).find(k => KEYWORDS[k].test(t)) || null;
+
+async function send(text) {
+  user(text);
+  if (CRISIS.test(text) && !sample) {
+    setLook({ pose: "open", face: "soothe" });
+    await say("ยายเป็นห่วงหลานมากนะ ตอนนี้อย่าอยู่คนเดียว โทรหาคนที่ไว้ใจ หรือโทรสายด่วนสุขภาพจิต 1323 ได้ตลอด 24 ชั่วโมง ถ้าฉุกเฉินโทร 1669 นะลูก");
+    return;
+  }
+  if (data.step === "promise") return makePromise(text.replace(/^วันนี้(จะ)?/, "").trim() || text, true);
+  if (sample) {
+    const t = document.createElement("div"); t.className = "typing"; t.innerHTML = "<i></i><i></i><i></i>";
+    $("log").appendChild(t); $("log").scrollTop = $("log").scrollHeight;
+    const history = data.log.slice(-14).map(m => (m.who === "g" ? "ยาย: " : "หลาน: ") + m.text).join("\n");
+    try {
+      const r = await sample.json(`${RULES}\n\nบทสนทนาวันนี้:\n${history}\n\nตอบข้อความล่าสุดของหลาน`, { modelTier: "quick", cache: false });
+      t.remove();
+      const mood = r && MOODS[r.mood] ? r.mood : null;
+      if (mood && mood !== data.mood) { data.mood = mood; save(); setLook(moodLook()); }
+      add("g", String(r && r.reply || "ยายฟังอยู่นะลูก"));
+      if (data.step === "mood" && data.mood) { data.step = "cheer"; save(); }
+      return;
+    } catch (e) {
+      t.remove();
+      if (e && e.code === "rate_limited") { await say("ยายขอพักแป๊บนึงนะลูก เดี๋ยวค่อยคุยกันต่อ"); return; }
+      if (e && ["not_granted", "sampling_disabled", "not_declared", "capability_disabled", "capability_removed", "session_expired"].includes(e.code)) sample = null;
+    }
+  }
+  const mood = detectMood(text);
+  if (mood) return pickMood(mood, true);
+  await say(fresh("listen", LINES.listen));
+}
+$("form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const v = $("text").value.trim(); if (!v || busy) return;
+  $("text").value = ""; busy = true; renderReplies();
+  try { await send(v); } finally { busy = false; renderReplies(); }
+});
+
+/* ---------- Story card (1080 × 1920) ---------- */
+function thaiWords(text) {
+  if (window.Intl && Intl.Segmenter) return Array.from(new Intl.Segmenter("th", { granularity: "word" }).segment(text), s => s.segment);
+  return Array.from(text);
+}
+// Thai has no spaces between words, but a space marks a phrase break: keep phrases whole, split a phrase only if it alone is too wide
+function wrapLines(ctx, text, maxW) {
+  const lines = []; let line = "";
+  const tokens = text.split(/(?<= )/).flatMap(p => ctx.measureText(p.trim()).width > maxW ? thaiWords(p) : [p]);
+  for (const w of tokens) {
+    const test = line + w;
+    if (ctx.measureText(test).width > maxW && line.trim()) { lines.push(line.trim()); line = w.trimStart(); } else line = test;
+  }
+  if (line.trim()) lines.push(line.trim());
+  return lines;
+}
+function roundRect(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+function loadSVG(svg) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg); }); }
+const currentQuote = () => data.quote || todaysQuote();
+
+async function makeStory(text, platform) {
+  try { await Promise.all(["300 40px Kanit", "400 60px Kanit", "500 80px Kanit"].map(f => document.fonts.load(f))); } catch (e) {}
+  const P = PLATFORMS[platform], W = 1080, H = 1920, F = '"Kanit", "Sukhumvit Set", sans-serif';
+  const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+  const ctx = cv.getContext("2d"), m = M();
+  const X = 90, right = W - P.right, cx = (X + right) / 2, maxW = right - X;
+
+  // Wall, window light, floor
+  const wall = ctx.createLinearGradient(0, 0, 0, H); wall.addColorStop(0, "#fbf1e2"); wall.addColorStop(1, "#f1dcbf");
+  ctx.fillStyle = wall; ctx.fillRect(0, 0, W, H);
+  const glow = ctx.createRadialGradient(W - 220, P.top + 120, 0, W - 220, P.top + 120, 520);
+  glow.addColorStop(0, "rgba(255,226,150,.75)"); glow.addColorStop(1, "rgba(255,226,150,0)"); ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+  const floorY = H - P.bottom - 380;
+  ctx.fillStyle = "#d9b48a"; ctx.fillRect(0, floorY, W, H - floorY);
+  ctx.fillStyle = "#c39566"; ctx.fillRect(0, floorY, W, 8);
+  ctx.fillStyle = "rgba(0,0,0,.05)"; for (let x = 0; x < W; x += 150) ctx.fillRect(x, floorY + 8, 4, H);
+
+  // Eyebrow
+  ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+  ctx.font = `400 38px ${F}`; ctx.fillStyle = "#7b6a60";
+  ctx.fillText(m ? `ยายนวลฝากมา ตอนหลาน${m.label}` : "ยายนวลฝากมาบอก", cx, P.top + 60);
+
+  // Grandma standing on the floor
+  const GH = 640, GW = GH * 200 / 250, gTop = floorY + 120 - GH;
+  const gm = m ? { outfit: m.outfit, pose: m.pose, face: m.face } : { outfit: "home", pose: "hug", face: "gentle" };
+  ctx.fillStyle = m ? m.glow : "#f6e1c8"; ctx.beginPath(); ctx.arc(cx, gTop + GH * .45, GW * .55, 0, Math.PI * 2); ctx.fill();
+  try { const img = await loadSVG(grandmaSVG(gm, false)); ctx.drawImage(img, cx - GW / 2, gTop, GW, GH); } catch (e) {}
+
+  // Speech bubble with the quote
+  const bTop = P.top + 100, bBottom = gTop - 30, bw = maxW, bx = X;
+  let size = 76, lines;
+  do { ctx.font = `500 ${size}px ${F}`; lines = wrapLines(ctx, text, bw - 120); size -= 4; } while (lines.length * size * 1.45 + 120 > bBottom - bTop && size > 44);
+  size += 4; const lh = size * 1.45, bh = Math.min(bBottom - bTop, lines.length * lh + 110), by = bTop + (bBottom - bTop - bh) / 2;
+  ctx.save(); ctx.shadowColor = "rgba(80,50,30,.14)"; ctx.shadowBlur = 40; ctx.shadowOffsetY = 14;
+  roundRect(ctx, bx, by, bw, bh, 56); ctx.fillStyle = "#ffffff"; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(cx - 34, by + bh - 2); ctx.lineTo(cx, by + bh + 46); ctx.lineTo(cx + 34, by + bh - 2); ctx.closePath(); ctx.fill(); ctx.restore();
+  ctx.font = `500 ${size}px ${F}`; ctx.fillStyle = "#33251f";
+  lines.forEach((l, i) => ctx.fillText(l, cx, by + 55 + size * .95 + i * lh));
+
+  // QR panel
+  ctx.textAlign = "left";
+  const ph = 180, pw = Math.min(maxW, 560), px = cx - pw / 2, py = H - P.bottom - ph;
+  ctx.save(); ctx.shadowColor = "rgba(80,50,30,.18)"; ctx.shadowBlur = 36; ctx.shadowOffsetY = 10;
+  roundRect(ctx, px, py, pw, ph, 44); ctx.fillStyle = "#fffaf2"; ctx.fill(); ctx.restore();
+  const qs = 136, qx = px + 22, qy = py + (ph - qs) / 2;
+  if (window.qrcode) {
+    const qr = qrcode(0, "M"); qr.addData(APP_URL); qr.make();
+    const n = qr.getModuleCount(), cell = qs / n; ctx.fillStyle = "#33251f";
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (qr.isDark(r, c)) ctx.fillRect(qx + c * cell, qy + r * cell, Math.ceil(cell), Math.ceil(cell));
+  }
+  const tx = qx + qs + 28;
+  ctx.fillStyle = "#33251f"; ctx.font = `500 38px ${F}`; ctx.fillText("คุยกับยายนวล", tx, py + 76);
+  ctx.font = `300 28px ${F}`; ctx.fillStyle = "#7b6a60";
+  ctx.fillText("สแกนให้ยายกอด", tx, py + 118);
+  ctx.fillText("ทุกเช้าที่แสงเช้า", tx, py + 154);
+  return cv.toDataURL("image/png");
+}
+
+/* ---------- Share sheet ---------- */
+let storyURL = null, lastFocus = null, platform = PLATFORMS[store.get("platform", "ig")] ? store.get("platform", "ig") : "ig";
+const caption = () => currentQuote() + "\n\nคุยกับยายนวลทุกเช้าที่แสงเช้า " + APP_URL + "\n#แสงเช้า #คำยาย #กำลังใจ";
+async function renderStory() {
+  const P = PLATFORMS[platform];
+  document.querySelectorAll("[data-platform]").forEach(b => b.setAttribute("aria-pressed", b.dataset.platform === platform));
+  $("nativeLabel").textContent = "แชร์ไปที่ " + P.name;
+  $("how").innerHTML = P.steps.map(s => "<li>" + s + "</li>").join("");
+  $("storyImg").style.opacity = ".35";
+  storyURL = await makeStory(currentQuote(), platform);
+  $("storyImg").src = storyURL; $("storyImg").style.opacity = "";
+}
+async function openShare() {
+  lastFocus = document.activeElement; $("storyImg").removeAttribute("src");
+  $("sheet").hidden = false; renderStory(); $("closeSheet").focus();
+}
+document.querySelectorAll("[data-platform]").forEach(b => b.addEventListener("click", () => { platform = b.dataset.platform; store.set("platform", platform); renderStory(); }));
+function closeSheet() { $("sheet").hidden = true; if (lastFocus && lastFocus.isConnected) lastFocus.focus(); }
+$("closeSheet").addEventListener("click", closeSheet);
+$("sheet").addEventListener("click", e => { if (e.target === $("sheet")) closeSheet(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("sheet").hidden) closeSheet(); });
+// Opens the phone's share menu (Instagram / TikTok / Facebook appear there) once the app runs on its own website.
+$("nativeShare").addEventListener("click", async () => {
+  if (!storyURL) return;
+  try {
+    const blob = await (await fetch(storyURL)).blob();
+    const file = new File([blob], "saengchao-story.png", { type: "image/png" });
+    if (!navigator.canShare || !navigator.canShare({ files: [file] })) throw new Error("unsupported");
+    await navigator.share({ files: [file], text: caption() });
+  } catch (e) {
+    if (e && e.name === "AbortError") return;
+    toast("เปิดเมนูแชร์จากตรงนี้ไม่ได้ ทำตาม 4 ขั้นด้านล่างแทนนะ");
+    $("how").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+});
+$("copyImg").addEventListener("click", () => {
+  if (!storyURL || !window.ClipboardItem) { toast("เครื่องนี้คัดลอกรูปไม่ได้ กดค้างที่รูปเพื่อบันทึกแทนนะ"); return; }
+  navigator.clipboard.write([new ClipboardItem({ "image/png": fetch(storyURL).then(r => r.blob()) })])
+    .then(() => toast("คัดลอกรูปแล้ว"), () => toast("คัดลอกรูปไม่ได้ กดค้างที่รูปเพื่อบันทึกแทนนะ"));
+});
+$("copyText").addEventListener("click", () => {
+  navigator.clipboard.writeText(caption()).then(() => toast("คัดลอกแคปชันแล้ว"), () => toast("คัดลอกไม่ได้ ลองพิมพ์แคปชันเองนะ"));
+});
+
+/* ---------- Boot ---------- */
+(function boot() {
+  const chipEl = document.createElement("div"); chipEl.className = "day-chip";
+  chipEl.textContent = now.toLocaleDateString("th-TH", { weekday: "long", day: "numeric", month: "long" });
+  $("log").appendChild(chipEl);
+  if (data.log.length) {
+    data.log.forEach(bubble);
+    if (data.step === "hug") setLook({ ...moodLook(), pose: "open", face: "smile" });
+    else if (data.step === "after" || data.step === "done") setLook({ ...moodLook(), pose: "wave", face: "smile" });
+    else setLook(M() ? moodLook() : { outfit: "home", pose: "wave", face: "smile" });
+    if (!data.step) data.step = "mood";
+    renderReplies();
+  } else {
+    greet();
+  }
+})();
+</script>
+
+</body>
+</html>
