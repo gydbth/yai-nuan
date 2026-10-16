@@ -67,6 +67,12 @@ button:focus-visible, input:focus-visible { outline: 2.5px solid var(--honey); o
 .window::before, .window::after { content: ""; position: absolute; background: #fff; }
 .window::before { left: 50%; top: 0; bottom: 0; width: 4px; margin-left: -2px; }
 .window::after { top: 50%; left: 0; right: 0; height: 4px; margin-top: -2px; }
+/* The room follows the clock */
+.scene.t-noon .window { background: radial-gradient(circle at 50% 18%, #fff6c9 0 12%, #ffe08f 13% 18%, transparent 19%), linear-gradient(180deg, #8fd0f2 0%, #d8f0fb 70%, #cde8c4 70%); }
+.scene.t-evening { background: linear-gradient(180deg, #f9e6cf 0%, #efcfa8 100%); }
+.scene.t-evening .window { background: radial-gradient(circle at 35% 64%, #ffe1ad 0 11%, #ffb36b 12% 17%, transparent 18%), linear-gradient(180deg, #f39f7c 0%, #fbd3a1 66%, #b9c99a 66%); box-shadow: 0 0 0 1.5px #d9c3a6, 0 0 60px 10px rgba(255, 170, 110, .45); }
+.scene.t-night { background: linear-gradient(180deg, #e6d8c3 0%, #d6bf9e 100%); }
+.scene.t-night .window { background: radial-gradient(circle at 68% 30%, #fffbe6 0 10%, transparent 11%), radial-gradient(circle at 24% 22%, #fff 0 2%, transparent 3%), radial-gradient(circle at 42% 52%, #fff 0 1.6%, transparent 2.4%), radial-gradient(circle at 80% 58%, #fff 0 1.4%, transparent 2.2%), linear-gradient(180deg, #1f2a4a 0%, #3b4a78 68%, #2c3a5e 68%); box-shadow: 0 0 0 1.5px #c9b391, 0 0 50px 6px rgba(120, 140, 200, .35); }
 .calendar { position: absolute; top: 16%; left: 9%; width: 46px; background: #fff; border-radius: 4px; box-shadow: 0 2px 0 #e4d3bd; text-align: center; font-size: .62rem; line-height: 1.2; color: var(--ink-soft); padding-bottom: 4px; }
 .calendar b { display: block; background: var(--accent); color: #fff; font-weight: 500; border-radius: 4px 4px 0 0; padding: 2px 0; font-size: .58rem; }
 .calendar span { display: block; font-size: 1.15rem; color: var(--ink); font-weight: 500; }
@@ -143,6 +149,10 @@ button:focus-visible, input:focus-visible { outline: 2.5px solid var(--honey); o
 @keyframes breathe { 50% { transform: scale(1.012, .993); } }
 .gm-wave { transform-box: fill-box; transform-origin: 0% 100%; animation: wave 1.6s ease-in-out infinite; }
 @keyframes wave { 50% { transform: rotate(-14deg); } }
+.gm-pat { transform-box: fill-box; transform-origin: 0% 100%; animation: pat .7s ease-in-out infinite; }
+@keyframes pat { 50% { transform: rotate(5deg) translateY(3px); } }
+.gm-zzz { animation: zzz 2.6s ease-in-out infinite; }
+@keyframes zzz { 0% { opacity: 0; transform: translateY(6px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(-8px); } }
 .gm-fan { transform-origin: 148px 92px; animation: fan .5s ease-in-out infinite alternate; }
 @keyframes fan { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
 .gm-steam { animation: steam 2.4s ease-in-out infinite; }
@@ -669,6 +679,7 @@ const LINES = {
   hugged: ["ยายกอดหลานไว้แล้วนะ อุ่นไหมลูก", "กอดแน่น ๆ เลย ยายรักหลานที่สุด", "ได้กอดหลานแล้วยายก็ชื่นใจ"],
   sendOff: ["ไปเถอะลูก ไปใช้ชีวิตให้เต็มที่ เดินทางปลอดภัยนะ", "ออกไปเจอโลกได้แล้วลูก ยายเป็นกำลังใจให้อยู่ตรงนี้", "ไปเถอะลูก ถ้าเหนื่อยเมื่อไหร่ กลับมาหายายได้เสมอ"],
   bye: ["จ้า เย็นนี้กลับมาเล่าให้ยายฟังนะ", "จ้ะ ดูแลตัวเองดี ๆ นะลูก ยายรออยู่", "ไปดีมาดีนะลูก กินข้าวให้ตรงเวลาด้วยล่ะ"],
+  askPromiseNight: ["พรุ่งนี้อยากทำอะไรดี ๆ ให้ตัวเองสักอย่างไหมลูก ยายจะช่วยจำไว้ให้", "ก่อนนอน ลองคิดเรื่องดี ๆ ที่อยากทำพรุ่งนี้สักเรื่องนะลูก", "พรุ่งนี้ใจดีกับตัวเองสักเรื่องนะลูก จะทำอะไรดี"],
   kept: ["เก่งมากเลยหลานยาย ยายภูมิใจในตัวหลานนะ", "เห็นไหม หลานทำได้ ยายรู้อยู่แล้ว", "ยายดีใจจนยิ้มไม่หุบเลย เก่งมากลูก"],
   listen: ["ยายฟังอยู่นะลูก เล่าต่อสิ", "อืม ยายเข้าใจนะ หลานเก่งมากแล้วที่บอกยาย", "ไม่เป็นไรนะลูก ค่อย ๆ ไป ยายอยู่ตรงนี้เสมอ", "กินข้าวหรือยังลูก ท้องอิ่มแล้วใจจะสบายขึ้น", "ขอบใจนะที่เล่าให้ยายฟัง ยายรักหลานนะ", "ยายอยู่ข้างหลานเสมอ ไม่ว่าเรื่องอะไรก็ตาม"]
 };
@@ -681,6 +692,50 @@ const PLATFORMS = {
             steps: ["<b>กดค้างที่รูป</b> แล้วเลือกบันทึกรูปภาพ", "เปิด <b>Facebook</b> แล้วกด <b>สร้างสตอรี่</b>", "เลือกรูปนี้จากคลังรูปภาพ", "กด <b>แชร์ไปยังสตอรี่</b>"] }
 };
 
+/* ---------- What grandma does for you, by time of day ----------
+   morning: a hug before you leave · afternoon: a pat on the head · evening: dinner · late night: tucks you in · after midnight: warm milk */
+const CARE = {
+  hug: {
+    ready: { pose: "open", face: "smile" }, act: { pose: "hug", face: "gentle" },
+    invite: LINES.hugAsk, hold: "กดค้างไว้ กอดยาย", done: LINES.hugged, sendOff: LINES.sendOff,
+    leave: "ไปแล้วนะยาย", bye: LINES.bye, burst: "hearts"
+  },
+  pat: {
+    ready: { pose: "pat", face: "smile" }, act: { pose: "pat", face: "gentle" },
+    invite: ["มานี่มาลูก ครึ่งวันแล้ว เหนื่อยไหม ให้ยายลูบหัวหน่อย กดค้างไว้นะ", "ก้มหัวมาหน่อยสิ ยายจะลูบหัวให้ กดค้างที่ปุ่มข้างล่าง", "มาให้ยายลูบหัวเติมแรงก่อนไปต่อนะลูก กดค้างไว้เลย"],
+    hold: "กดค้างไว้ ให้ยายลูบหัว",
+    done: ["ลูบหัว ลูบหัว เก่งมากหลานยาย ผ่านมาครึ่งวันแล้วนะ", "ยายลูบหัวให้แล้ว หายเหนื่อยไหมลูก", "ผมนุ่มเชียว หลานยายเก่งที่สุดเลย"],
+    sendOff: ["ไปลุยต่อนะลูก อย่าลืมพักดื่มน้ำด้วย", "บ่ายนี้ขอให้ทุกอย่างราบรื่นนะ ยายเอาใจช่วยอยู่", "ไปเถอะลูก เหนื่อยเมื่อไหร่ก็กลับมาให้ยายลูบหัวอีกนะ"],
+    leave: "ไปลุยต่อแล้วนะยาย", bye: ["จ้า สู้ ๆ นะลูก เย็นนี้เจอกัน", "จ้ะ ยายรอฟังเรื่องตอนเย็นนะ"], burst: "hearts"
+  },
+  cook: {
+    ready: { outfit: "apron", pose: "cook", face: "smile" }, act: { outfit: "apron", pose: "bowl", face: "smile" },
+    invite: ["ยายทำกับข้าวรอแล้ว มากินข้าวกันลูก กดค้างไว้ให้ยายตักให้นะ", "หิวหรือยัง ยายผัดกะเพราไข่ดาวไว้ให้ กดค้างไว้เลยลูก", "ล้างมือแล้วมากินข้าวนะ ยายทำแกงจืดร้อน ๆ ไว้ กดค้างที่ปุ่มข้างล่าง"],
+    hold: "กดค้างไว้ ให้ยายตักข้าวให้",
+    done: ["ตักให้เต็มจานเลย กินเยอะ ๆ นะลูก", "กินให้อิ่มนะลูก ยายทำด้วยความรักเลย", "อร่อยไหม ยายใส่ความคิดถึงลงไปด้วยนะ"],
+    sendOff: ["กินอิ่มแล้วพักผ่อนนะ คืนนี้นอนเร็ว ๆ", "กินเสร็จแล้วอาบน้ำอุ่น ๆ นะลูก วันนี้เก่งมากแล้ว", "อิ่มท้องแล้วใจก็อิ่มนะลูก เย็นนี้พักให้เต็มที่"],
+    leave: "อิ่มแล้ว ขอบคุณนะยาย", bye: ["จ้ะ จานไม่ต้องล้างนะ ยายล้างเอง ไปพักเถอะ", "อิ่มแล้วก็ดีแล้วลูก ไปพักผ่อนนะ"], burst: "hearts"
+  },
+  blanket: {
+    ready: { outfit: "night", pose: "open", face: "gentle" }, act: { outfit: "night", pose: "quilt", face: "calm" },
+    invite: ["ดึกแล้วนะลูก ขึ้นเตียงเถอะ ยายห่มผ้าให้ กดค้างไว้นะ", "ได้เวลานอนแล้ว มา ยายห่มผ้าให้อุ่น ๆ กดค้างที่ปุ่มข้างล่าง", "วันนี้เหนื่อยมามากแล้ว นอนเถอะลูก ให้ยายห่มผ้าให้นะ"],
+    hold: "กดค้างไว้ ให้ยายห่มผ้าให้",
+    done: ["ห่มผ้าให้แล้ว อุ่นไหมลูก", "ห่มให้มิดคอเลย คืนนี้อากาศเย็นนะ", "ยายห่มผ้าให้แล้ว หลับฝันดีนะหลานรัก"],
+    sendOff: ["หลับฝันดีนะลูก พรุ่งนี้เช้ายายรออยู่", "วางมือถือแล้วหลับตานะลูก ยายนั่งอยู่ข้าง ๆ นี่แหละ", "นอนหลับให้สบาย เรื่องพรุ่งนี้ไว้ค่อยว่ากัน"],
+    leave: "ฝันดีนะยาย", bye: ["ฝันดีจ้ะลูก ยายรักหลานนะ", "ฝันดีนะหลานรัก พรุ่งนี้เจอกัน"], burst: "stars"
+  },
+  milk: {
+    ready: { outfit: "nightcoat", pose: "milk", face: "gentle" }, act: { outfit: "nightcoat", pose: "milk", face: "smile" },
+    invite: ["ยังไม่นอนอีกเหรอ ยายชงนมอุ่น ๆ ให้แก้วนึง กดค้างไว้นะ", "นอนไม่หลับใช่ไหมลูก มา ยายชงนมอุ่นให้ กดค้างที่ปุ่มข้างล่าง", "ดึกขนาดนี้แล้ว จิบนมอุ่น ๆ ก่อนนอนนะลูก กดค้างไว้เลย"],
+    hold: "กดค้างไว้ รับนมอุ่นจากยาย",
+    done: ["นมอุ่น ๆ มาแล้ว ค่อย ๆ จิบนะลูก", "ยายใส่น้ำผึ้งให้นิดนึงด้วย ดื่มแล้วจะหลับสบาย", "จิบนมอุ่นแล้วใจจะสงบลงนะหลาน"],
+    sendOff: ["ดื่มหมดแล้วไปนอนนะลูก", "เรื่องที่ค้างใจ วางไว้ก่อน พรุ่งนี้ค่อยคิดนะลูก", "หลับตาแล้วหายใจช้า ๆ นะ ยายอยู่ตรงนี้"],
+    leave: "ไปนอนแล้วนะยาย", bye: ["หลับฝันดีนะลูก ยายรักหลานนะ", "ฝันดีจ้ะ พรุ่งนี้ตื่นมาเจอยายนะ"], burst: "stars"
+  }
+};
+const careAt = h => h < 5 ? "milk" : h < 11 ? "hug" : h < 17 ? "pat" : h < 22 ? "cook" : "blanket";
+const isNight = h => h < 5 || h >= 22;
+
 /* ---------- Grandma Nuan (full colour, outfit + pose + face) ---------- */
 const O = "#4a3428", SKIN = "#f2cfb1", HAIR = "#d6d1ca", ROSE = "#ee9c8f", GOLD = "#e3a93c", JADE = "#7db596";
 const OUTFITS = {
@@ -690,7 +745,9 @@ const OUTFITS = {
   shawl:    { top: "#c3dbee", sleeve: "#c3dbee", sarong: ["#3d5a80", "#a8c1dc"], shawl: "#f3e8d3" },
   sweater:  { top: "#cbc1e6", sleeve: "#cbc1e6", sarong: ["#5b4f7a", "#b2a8d3"], knit: true },
   apron:    { top: "#c9504a", sleeve: "#c9504a", sarong: ["#7a4e33", "#d7a967"], apron: true },
-  cool:     { top: "#d3e9d6", sleeve: "#d3e9d6", lace: true, sarong: ["#2f6b5e", "#9ccbb9"] }
+  cool:     { top: "#d3e9d6", sleeve: "#d3e9d6", lace: true, sarong: ["#2f6b5e", "#9ccbb9"] },
+  night:    { top: "#c4cfe9", sleeve: "#c4cfe9", lace: true, sarong: ["#4b5a8a", "#a7b6db"] },
+  nightcoat:{ top: "#c4cfe9", sleeve: "#d8c09b", lace: true, sarong: ["#4b5a8a", "#a7b6db"], cardigan: "#d8c09b" }
 };
 let uid = 0;
 const hand = (x, y, bangle) => (bangle ? `<circle cx="${x}" cy="${y}" r="8.5" fill="none" stroke="${JADE}" stroke-width="3"/>` : "") + `<circle cx="${x}" cy="${y}" r="6.5" fill="${SKIN}" stroke="${O}" stroke-width="2.2"/>`;
@@ -700,7 +757,15 @@ const heartAt = (x, y, s) => `<path transform="translate(${x} ${y}) scale(${s})"
 const PROPS = {
   tea: a => `<path class="${a ? "gm-steam" : ""}" d="M96 122 q-3 -5 0 -10 M104 122 q-3 -5 0 -10" stroke="${O}" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M87 126 H113 L110 143 Q100 148 90 143 Z" fill="#fff" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M90 132 H110" stroke="${JADE}" stroke-width="2.4"/>`,
   bowl: () => `<path d="M106 124 L124 106 M110 126 L127 110" stroke="#9a6a43" stroke-width="3" stroke-linecap="round"/><path d="M88 128 Q100 115 112 128 Z" fill="#fff" stroke="${O}" stroke-width="2"/><path d="M84 128 H116 Q114 146 100 146 Q86 146 84 128 Z" fill="#fff" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M87 134 H113" stroke="#5f86b3" stroke-width="2.4"/>`,
-  heart: () => heartAt(100, 132, 1.7)
+  heart: () => heartAt(100, 132, 1.7),
+  pot: a => `<path class="${a ? "gm-steam" : ""}" d="M92 110 q-3 -5 0 -10 M100 108 q-3 -5 0 -10 M108 110 q-3 -5 0 -10" stroke="${O}" stroke-width="2" fill="none" stroke-linecap="round"/>`
+    + `<path d="M78 126 h-6 M122 126 h6" stroke="${O}" stroke-width="4" stroke-linecap="round"/><path d="M80 121 H120 V137 Q120 147 110 147 H90 Q80 147 80 137 Z" fill="#4f8a8b" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/>`
+    + `<ellipse cx="100" cy="120" rx="22" ry="4.5" fill="#6fa8a8" stroke="${O}" stroke-width="2"/><circle cx="100" cy="114.5" r="3" fill="${GOLD}" stroke="${O}" stroke-width="1.6"/><path d="M84 132 H116" stroke="#e8f1ee" stroke-width="2" opacity=".6"/>`,
+  milk: a => `<path class="${a ? "gm-steam" : ""}" d="M96 118 q-3 -5 0 -10 M104 118 q-3 -5 0 -10" stroke="${O}" stroke-width="2" fill="none" stroke-linecap="round"/>`
+    + `<path d="M111 127 q8 0 8 6 q0 6 -8 6" stroke="${O}" stroke-width="2.2" fill="none"/><path d="M89 123 H111 V141 Q111 146 106 146 H94 Q89 146 89 141 Z" fill="#fff" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/>`
+    + `<ellipse cx="100" cy="124.5" rx="10" ry="2.2" fill="#f4ead6"/>` + heartAt(100, 134, .55),
+  quilt: (a, id) => `<path d="M46 144 Q100 134 154 144 L158 214 Q129 222 100 216 Q71 222 42 214 Z" fill="url(#qlt-${id})" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/>`
+    + `<path d="M46 150 Q100 140 154 150" stroke="#fff" stroke-width="3" fill="none" opacity=".7"/>`
 };
 // Arms: [sleeve path, hand x, hand y] for left and right
 const ARMS = {
@@ -711,9 +776,12 @@ const ARMS = {
   chest: [["M72 118 Q52 122 48 104", 48, 99], ["M128 120 Q124 134 110 128", 107, 127]],
   open:  [["M72 118 Q48 110 42 90", 42, 85], ["M128 118 Q152 110 158 90", 158, 85]],
   fan:   [["M72 118 Q62 142 68 158", 68, 162], ["M128 118 Q150 114 148 98", 148, 94]],
-  hug:   [["M70 118 Q64 148 104 142", 106, 142], ["M130 118 Q136 148 96 142", 94, 142]]
+  hug:   [["M70 118 Q64 148 104 142", 106, 142], ["M130 118 Q136 148 96 142", 94, 142]],
+  pat:   [["M72 118 Q62 142 68 158", 68, 162], ["M128 118 Q154 104 150 76", 150, 72], "pat"],
+  quilt: [["M72 118 Q54 128 50 142", 50, 146], ["M128 118 Q146 128 150 142", 150, 146]]
 };
-const POSES = { rest: ["rest"], wave: ["wave"], cheer: ["cheer", null, "spark"], tea: ["front", "tea"], bowl: ["front", "bowl"], chest: ["chest"], open: ["open"], fan: ["fan", null, "fan"], hug: ["hug", "heart"] };
+const POSES = { rest: ["rest"], wave: ["wave"], cheer: ["cheer", null, "spark"], tea: ["front", "tea"], bowl: ["front", "bowl"], chest: ["chest"], open: ["open"], fan: ["fan", null, "fan"], hug: ["hug", "heart"],
+  pat: ["pat", null, "spark"], cook: ["front", "pot"], milk: ["front", "milk", "zzz"], quilt: ["quilt", "quilt", "zzz"] };
 const BROW_SOFT = `<path d="M82 63 Q88 60 94 63 M106 63 Q112 60 118 63" stroke="${O}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".6"/>`;
 const BROW_CARE = `<path d="M82 66 L93 62 M107 62 L118 66" stroke="${O}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".7"/>`;
 const SMILE_EYES = `<path d="M83 77 Q88 71 93 77 M107 77 Q112 71 117 77" stroke="${O}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
@@ -728,13 +796,16 @@ function grandmaSVG({ outfit = "home", pose = "wave", face = "smile" } = {}, ani
   const id = "g" + (++uid), of = OUTFITS[outfit], [armKey, prop, extra] = POSES[pose], arms = ARMS[armKey];
   const top = of.top.replace("ID", id);
   const armSvg = (i, bangle) => { const [d, x, y] = arms[i]; return sleeve(d, of.sleeve) + hand(x, y, bangle); };
-  const right = arms[2] === "wave" && anim ? `<g class="gm-wave">${armSvg(1)}</g>` : armSvg(1);
+  const swing = { wave: "gm-wave", pat: "gm-pat" }[arms[2]];
+  const right = swing && anim ? `<g class="${swing}">${armSvg(1)}</g>` : armSvg(1);
   const fan = extra === "fan" ? `<g class="${anim ? "gm-fan" : ""}"><path d="M148 94 L128 66 A26 26 0 0 1 168 66 Z" fill="#d9574a" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M148 94 L138 62 M148 94 L148 60 M148 94 L158 62" stroke="#f4c3ad" stroke-width="1.6"/></g>` : "";
-  const sparks = extra === "spark" ? spark(28, 54, anim) + spark(172, 50, anim) + spark(20, 100, anim) : "";
+  const sparks = extra === "spark" ? spark(28, 54, anim) + spark(172, 50, anim) + spark(20, 100, anim)
+    : extra === "zzz" ? `<g class="${anim ? "gm-zzz" : ""}" fill="none" stroke="#6d7fb3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M142 36 h10 l-10 10 h10"/><path d="M158 20 h7 l-7 7 h7"/></g>` : "";
   return `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ยายนวล">
   <defs>
     <pattern id="sar-${id}" width="22" height="16" patternUnits="userSpaceOnUse"><rect width="22" height="16" fill="${of.sarong[0]}"/><path d="M0 8 Q5.5 3 11 8 T22 8" stroke="${of.sarong[1]}" stroke-width="2" fill="none"/><circle cx="11" cy="14" r="1.6" fill="${of.sarong[1]}"/></pattern>
     <pattern id="flo-${id}" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#f5cf5e"/><circle cx="5" cy="5" r="2.6" fill="#fff"/><circle cx="5" cy="5" r="1.1" fill="#e5806a"/><circle cx="14" cy="13" r="2.6" fill="#f08f7c"/><circle cx="14" cy="13" r="1" fill="#fff"/></pattern>
+    <pattern id="qlt-${id}" width="24" height="24" patternUnits="userSpaceOnUse"><rect width="24" height="24" fill="#f6dfae"/><rect width="12" height="12" fill="#efb9ae"/><rect x="12" y="12" width="12" height="12" fill="#b9cbe8"/><path d="M0 12 H24 M12 0 V24" stroke="#fff" stroke-width="1.2" stroke-dasharray="2 2"/></pattern>
     <pattern id="gin-${id}" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#fff"/><rect width="5" height="10" fill="#e7a3a0" opacity=".55"/><rect width="10" height="5" fill="#e7a3a0" opacity=".55"/></pattern>
   </defs>
   <ellipse cx="100" cy="242" rx="50" ry="6" fill="#000" opacity=".1"/>
@@ -761,9 +832,9 @@ function grandmaSVG({ outfit = "home", pose = "wave", face = "smile" } = {}, ani
     ${FACES[face](anim)}
     <g fill="none" stroke="${O}" stroke-width="1.5"><circle cx="88" cy="76" r="9.5"/><circle cx="112" cy="76" r="9.5"/><path d="M97.5 75 Q100 72.5 102.5 75"/></g>
     ${fan}
-    ${sleeve(arms[0][0], of.sleeve)}${arms[2] === "wave" ? "" : sleeve(arms[1][0], of.sleeve)}
-    ${prop ? PROPS[prop](anim) : ""}
-    ${hand(arms[0][1], arms[0][2], true)}${arms[2] === "wave" ? right : hand(arms[1][1], arms[1][2], false)}
+    ${sleeve(arms[0][0], of.sleeve)}${swing ? "" : sleeve(arms[1][0], of.sleeve)}
+    ${prop ? PROPS[prop](anim, id) : ""}
+    ${hand(arms[0][1], arms[0][2], true)}${swing ? right : hand(arms[1][1], arms[1][2], false)}
     ${sparks}
   </g></svg>`;
 }
@@ -803,12 +874,14 @@ function setLook(next) {
   document.documentElement.style.setProperty("--mood", M() ? M().glow : "#f6e1c8");
 }
 const moodLook = () => M() ? { outfit: M().outfit, pose: M().pose, face: M().face } : { outfit: "home", pose: "rest", face: "gentle" };
-function hearts() {
+function hearts(kind = "hearts") {
   if (reduced) return;
   for (let i = 0; i < 10; i++) {
     const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     s.setAttribute("viewBox", "-11 -10 22 20"); s.setAttribute("class", "heart");
-    s.innerHTML = `<path d="M0 6C-7 1-10-3-10-7a5 5 0 0 1 10-2 5 5 0 0 1 10 2c0 4-3 8-10 13z" fill="${i % 3 ? ROSE : GOLD}"/>`;
+    s.innerHTML = kind === "stars"
+      ? `<path d="M0 -9 L2.6 -2.8 9.5 -2.8 4 1.4 6 8 0 4 -6 8 -4 1.4 -9.5 -2.8 -2.6 -2.8Z" fill="${i % 3 ? "#f3d27a" : "#a9b8e6"}"/>`
+      : `<path d="M0 6C-7 1-10-3-10-7a5 5 0 0 1 10-2 5 5 0 0 1 10 2c0 4-3 8-10 13z" fill="${i % 3 ? ROSE : GOLD}"/>`;
     s.style.left = (32 + Math.random() * 36) + "%"; s.style.top = (40 + Math.random() * 30) + "%"; s.style.animationDelay = (i * .12) + "s";
     $("hearts").appendChild(s); setTimeout(() => s.remove(), 2800);
   }
@@ -855,7 +928,7 @@ function renderReplies() {
     box.append(chip("ไว้ค่อยคิดนะยาย", skipPromise));
   }
   if (s === "hug") box.append(holdButton());
-  if (s === "done") box.append(chip("ไปแล้วนะยาย", leave, { main: true }), chip("ส่งคำยายลงสตอรี่", openShare));
+  if (s === "done") box.append(chip(care().leave, leave, { main: true }), chip("ส่งคำยายลงสตอรี่", openShare));
   if (s === "after") {
     if (data.promise && !data.done) box.append(chip("ทำตามที่สัญญาแล้วยาย", keptPromise, { main: true }));
     box.append(chip("อยากเล่าให้ยายฟังอีก", askMood), chip("ส่งคำยายลงสตอรี่", openShare));
@@ -898,7 +971,7 @@ async function greet() {
   const h = now.getHours();
   const slot = h < 5 ? "late" : h < 11 ? "morning" : h < 17 ? "noon" : h < 22 ? "evening" : "late";
   busy = true;
-  setLook({ outfit: "home", pose: "wave", face: "smile" });
+  setLook({ outfit: isNight(h) ? "night" : "home", pose: "wave", face: "smile" });
   for (const l of fresh("greet-" + slot, LINES[slot])) await say(l);
   await say(fresh("quoteIntro", LINES.quoteIntro));
   data.quote = todaysQuote(); save();
@@ -926,32 +999,39 @@ async function thanks() {
   user("ขอบคุณนะยาย");
   await say(fresh("thanks", LINES.thanks));
   setLook({ pose: "rest", face: "gentle" });
-  await say(fresh("askPromise", LINES.askPromise) + " เลือกเอา หรือพิมพ์บอกยายก็ได้");
+  const night = isNight(new Date().getHours());
+  await say(fresh(night ? "askPromiseNight" : "askPromise", night ? LINES.askPromiseNight : LINES.askPromise) + " เลือกเอา หรือพิมพ์บอกยายก็ได้");
   data.step = "promise"; save();
 }
+const care = () => CARE[data.care] || CARE[careAt(new Date().getHours())];
+const careLook = which => ({ outfit: moodLook().outfit, ...care()[which] });
 async function makePromise(t, typed) {
-  if (!typed) user("วันนี้จะ" + t);
+  if (!typed) user((isNight(new Date().getHours()) ? "พรุ่งนี้จะ" : "วันนี้จะ") + t);
   data.promise = t; data.done = false; save();
   await say(fresh("promiseOk", LINES.promiseOk));
   await toHug();
 }
 async function skipPromise() { user("ไว้ค่อยคิดนะยาย"); await say(fresh("skip", LINES.skip)); await toHug(); }
 async function toHug() {
-  setLook({ pose: "open", face: "smile" });
-  await say(fresh("hugAsk", LINES.hugAsk));
+  data.care = careAt(new Date().getHours()); save();
+  const c = care();
+  setLook(careLook("ready"));
+  await say(fresh("invite-" + data.care, c.invite));
   data.step = "hug"; save();
 }
 async function hugged() {
+  const c = care();
   data.hugged = true; save();
-  setLook({ pose: "hug", face: "gentle" }); hearts();
-  await say(fresh("hugged", LINES.hugged));
-  await say(fresh("sendOff", LINES.sendOff) + (data.promise ? ` แล้วอย่าลืม${data.promise}ล่ะ` : ""));
+  setLook(careLook("act")); hearts(c.burst);
+  await say(fresh("done-" + data.care, c.done));
+  await say(fresh("sendOff-" + data.care, c.sendOff) + (data.promise ? ` แล้วอย่าลืม${data.promise}ล่ะ` : ""));
   data.step = "done"; save();
 }
 async function leave() {
-  user("ไปแล้วนะยาย");
-  setLook({ pose: "wave", face: "smile" });
-  await say(fresh("bye", LINES.bye));
+  const c = care();
+  user(c.leave);
+  setLook(isNight(new Date().getHours()) ? { ...c.ready, pose: "rest", face: "gentle" } : { pose: "wave", face: "smile" });
+  await say(fresh("bye-" + data.care, c.bye));
   data.step = "after"; save();
 }
 async function keptPromise() {
@@ -964,8 +1044,8 @@ async function keptPromise() {
 /* Hold to hug */
 function holdButton() {
   const b = document.createElement("button");
-  b.type = "button"; b.className = "hold"; b.setAttribute("aria-label", "กดค้างไว้เพื่อกอดยาย");
-  b.innerHTML = `<span class="fill"></span><span class="label">กดค้างไว้ กอดยาย</span><span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>`;
+  b.type = "button"; b.className = "hold"; b.setAttribute("aria-label", care().hold);
+  b.innerHTML = `<span class="fill"></span><span class="label">${care().hold}</span><span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>`;
   const fill = b.querySelector(".fill"); let start = 0, raf = 0, done = false;
   const tick = () => {
     const p = Math.min(1, (performance.now() - start) / 1300); fill.style.width = p * 100 + "%";
@@ -1137,12 +1217,14 @@ $("copyText").addEventListener("click", () => {
 
 /* ---------- Boot ---------- */
 (function boot() {
+  const h = now.getHours();
+  document.querySelector(".scene").classList.add("t-" + (isNight(h) ? "night" : h < 11 ? "morning" : h < 17 ? "noon" : "evening"));
   const chipEl = document.createElement("div"); chipEl.className = "day-chip";
   chipEl.textContent = now.toLocaleDateString("th-TH", { weekday: "long", day: "numeric", month: "long" });
   $("log").appendChild(chipEl);
   if (data.log.length) {
     data.log.forEach(bubble);
-    if (data.step === "hug") setLook({ ...moodLook(), pose: "open", face: "smile" });
+    if (data.step === "hug") setLook(careLook("ready"));
     else if (data.step === "after" || data.step === "done") setLook({ ...moodLook(), pose: "wave", face: "smile" });
     else setLook(M() ? moodLook() : { outfit: "home", pose: "wave", face: "smile" });
     if (!data.step) data.step = "mood";
