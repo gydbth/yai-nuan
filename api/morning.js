@@ -1,4 +1,4 @@
-// Every morning Grandma Nuan sends one quote to everyone who added her LINE Official Account.
+// Every morning Grandma Somsri sends one quote to everyone who added her LINE Official Account.
 // Triggered by the Vercel Cron in vercel.json (07:00 Thailand time).
 //
 // Environment variables (set in Vercel → Settings → Environment Variables):
@@ -11,7 +11,7 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 
-const SITE = "https://yai-nuan.vercel.app";
+const SITE = "https://yai-somsri.vercel.app";
 const OPENERS = [
   "อรุณสวัสดิ์จ้ะหลานรัก ยายมีคำคมเช้านี้มาฝาก",
   "ตื่นแล้วเหรอลูก ก่อนออกจากบ้าน ยายฝากคำนี้ไว้นะ",
@@ -49,7 +49,7 @@ function todaysMessage() {
         contents: [
           { type: "text", text: opener, size: "sm", color: "#7b6a60", wrap: true },
           { type: "text", text: `“${quote}”`, size: "xl", weight: "bold", color: "#33251f", wrap: true },
-          { type: "text", text: "— ยายนวล", size: "sm", color: "#ad9e94", align: "end" }
+          { type: "text", text: "— ยายสมศรี", size: "sm", color: "#ad9e94", align: "end" }
         ]
       },
       footer: {

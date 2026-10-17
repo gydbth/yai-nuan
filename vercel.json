@@ -1,8 +1,26 @@
 {
   "functions": {
-    "api/morning.js": { "includeFiles": "index.html" }
+    "api/morning.js": {
+      "includeFiles": "index.html"
+    }
   },
   "crons": [
-    { "path": "/api/morning", "schedule": "0 0 * * *" }
+    {
+      "path": "/api/morning",
+      "schedule": "0 0 * * *"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/((?!api/).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "yai-nuan.vercel.app"
+        }
+      ],
+      "destination": "https://yai-somsri.vercel.app/$1",
+      "permanent": true
+    }
   ]
 }
