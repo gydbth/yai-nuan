@@ -1,17 +1,17 @@
-# ตั้งค่า LINE OA "ยายนวล"
+# ตั้งค่า LINE OA "ยายสมศรี"
 
 คู่มือนี้ทำ 2 อย่าง:
 
-1. **บ้านของยายใน LINE:** บัญชี LINE OA รูปโปรไฟล์ยายนวล ข้อความต้อนรับ และ Rich menu ที่กดแล้วเปิดเว็บยายนวล
+1. **บ้านของยายใน LINE:** บัญชี LINE OA รูปโปรไฟล์ยายสมศรี ข้อความต้อนรับ และ Rich menu ที่กดแล้วเปิดเว็บยายสมศรี
 2. **ยายทักทุกเช้า:** ทุกวัน 7 โมงเช้า (เวลาไทย) ยายส่งคำคมของวันให้ทุกคนที่เพิ่มเพื่อน
 
 ไฟล์ที่ใช้อยู่ในโฟลเดอร์ `line/` ของ repo นี้ หรือดาวน์โหลดจากเว็บได้เลย:
 
 | ไฟล์ | ใช้ทำอะไร |
 |---|---|
-| [line/profile.png](https://yai-nuan.vercel.app/line/profile.png) | รูปโปรไฟล์ OA (640×640) |
-| [line/richmenu.jpg](https://yai-nuan.vercel.app/line/richmenu.jpg) | รูป Rich menu แบบ 2 ช่อง (2500×843) |
-| [line/morning.jpg](https://yai-nuan.vercel.app/line/morning.jpg) | รูปในข้อความตอนเช้า (ระบบใช้เอง ไม่ต้องอัปโหลด) |
+| [line/profile.png](https://yai-somsri.vercel.app/line/profile.png) | รูปโปรไฟล์ OA (640×640) |
+| [line/richmenu.jpg](https://yai-somsri.vercel.app/line/richmenu.jpg) | รูป Rich menu แบบ 2 ช่อง (2500×843) |
+| [line/morning.jpg](https://yai-somsri.vercel.app/line/morning.jpg) | รูปในข้อความตอนเช้า (ระบบใช้เอง ไม่ต้องอัปโหลด) |
 
 ---
 
@@ -20,7 +20,7 @@
 ### 1. สร้างบัญชี LINE OA
 1. เข้า https://manager.line.biz แล้วล็อกอินด้วยบัญชี LINE
 2. กด **สร้างบัญชี LINE Official Account**
-3. ชื่อบัญชี: `ยายนวล` · หมวดหมู่: ไลฟ์สไตล์ (หรือใกล้เคียง)
+3. ชื่อบัญชี: `ยายสมศรี` · หมวดหมู่: ไลฟ์สไตล์ (หรือใกล้เคียง)
 4. สร้างเสร็จแล้วจด **Basic ID** ไว้ (หน้าตาแบบ `@123abcde`) เพราะต้องใช้ในข้อ 4
 
 ### 2. รูปโปรไฟล์และหน้าโปรไฟล์
@@ -36,11 +36,11 @@
 
 ### 4. Rich menu (ปุ่มใหญ่ใต้แชท)
 1. **หน้าหลัก → ริชเมนู → สร้าง**
-2. ชื่อ: `เมนูยายนวล` · ช่วงเวลาแสดง: ตั้งให้ยาว ๆ เช่น 10 ปี
+2. ชื่อ: `เมนูยายสมศรี` · ช่วงเวลาแสดง: ตั้งให้ยาว ๆ เช่น 10 ปี
 3. **เลือกเทมเพลต:** แบบขนาดเล็ก (compact) 2 ช่อง แบ่งซ้าย-ขวา
 4. **อัปโหลดรูป:** `line/richmenu.jpg`
 5. ตั้งการทำงานของแต่ละช่อง (ประเภท: ลิงก์)
-   - ช่อง A (ซ้าย "คุยกับยาย"): `https://yai-nuan.vercel.app/?source=line`
+   - ช่อง A (ซ้าย "คุยกับยาย"): `https://yai-somsri.vercel.app/?source=line`
    - ช่อง B (ขวา "ชวนเพื่อนมาหายาย"): `https://line.me/R/nv/recommendOA/@123abcde` (เปลี่ยน `@123abcde` เป็น Basic ID ของคุณ)
 6. **การแสดงเมนูเริ่มต้น:** แสดง แล้วกดบันทึก
 
@@ -56,9 +56,9 @@
 ### 6. เปิด Messaging API
 1. ใน LINE OA Manager: **ตั้งค่า → Messaging API → เปิดใช้งาน Messaging API**
 2. ถ้าระบบถาม Provider ให้สร้างใหม่ ชื่ออะไรก็ได้ เช่น `แสงเช้า`
-3. เข้า https://developers.line.biz/console → เลือก Provider → เลือก Channel "ยายนวล"
+3. เข้า https://developers.line.biz/console → เลือก Provider → เลือก Channel "ยายสมศรี"
 4. แท็บ **Messaging API** → เลื่อนลงไปที่ **Channel access token (long-lived)** → กด **Issue** แล้วคัดลอกไว้
-   - **อย่าแชร์ token นี้ให้ใคร และอย่าวางลงในโค้ดหรือในแชท** ใครได้ token ไปจะส่งข้อความในนามยายนวลได้
+   - **อย่าแชร์ token นี้ให้ใคร และอย่าวางลงในโค้ดหรือในแชท** ใครได้ token ไปจะส่งข้อความในนามยายสมศรีได้
 
 ### 7. ใส่ค่าใน Vercel
 เข้า https://vercel.com → โปรเจกต์ **yai-nuan** → **Settings → Environment Variables** แล้วเพิ่ม 2 ตัว (เลือก Environment: **Production**):
@@ -74,13 +74,13 @@
 ดูหน้าตาข้อความโดยยังไม่ส่งจริง (เปลี่ยน `<CRON_SECRET>` เป็นค่าที่ตั้งไว้):
 
 ```bash
-curl -H "Authorization: Bearer <CRON_SECRET>" "https://yai-nuan.vercel.app/api/morning?dry=1"
+curl -H "Authorization: Bearer <CRON_SECRET>" "https://yai-somsri.vercel.app/api/morning?dry=1"
 ```
 
 ส่งจริงทันที 1 ครั้ง (ทุกคนที่เป็นเพื่อนจะได้รับ และนับโควตา):
 
 ```bash
-curl -H "Authorization: Bearer <CRON_SECRET>" "https://yai-nuan.vercel.app/api/morning"
+curl -H "Authorization: Bearer <CRON_SECRET>" "https://yai-somsri.vercel.app/api/morning"
 ```
 
 หลังจากนี้ Vercel จะเรียกเองทุกวันตอน 07:00 เวลาไทย (ใน `vercel.json` ตั้งเป็น `0 0 * * *` ซึ่งเป็นเวลา UTC) ถ้าใช้ Vercel แพ็กเกจฟรี เวลาส่งอาจคลาดได้ภายในชั่วโมงนั้น ดูประวัติการรันได้ที่ **Settings → Cron Jobs**

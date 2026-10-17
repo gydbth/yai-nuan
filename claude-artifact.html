@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap">
 <style>
-/* Layout: a chat with Grandma Nuan at home. Top: her living room in morning light, with her changing clothes and pose to match how you feel.
+/* Layout: a chat with Grandma Somsri at home. Top: her living room in morning light, with her changing clothes and pose to match how you feel.
    Below: the chat, quick replies, and a text box. Warm single light look by design. */
 :root {
   color-scheme: light;
@@ -149,7 +149,7 @@ button:focus-visible, input:focus-visible { outline: 2.5px solid var(--honey); o
 <main class="app">
   <header class="head">
     <div class="avatar" id="avatar" aria-hidden="true"></div>
-    <div class="who"><b>ยายนวล</b><small><i></i>อยู่บ้าน</small></div>
+    <div class="who"><b>ยายสมศรี</b><small><i></i>อยู่บ้าน</small></div>
     <div class="streak" id="streak">วันแรก</div>
   </header>
 
@@ -205,7 +205,7 @@ button:focus-visible, input:focus-visible { outline: 2.5px solid var(--honey); o
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 // Link encoded in the QR code and captions: the public website
-const APP_URL = "https://yai-nuan.vercel.app/";
+const APP_URL = "https://yai-somsri.vercel.app/";
 
 /* ---------- Feelings: what you say, what grandma wears, how she stands, what she says ---------- */
 const MOODS = {
@@ -399,7 +399,7 @@ const PLATFORMS = {
             steps: ["<b>กดค้างที่รูป</b> แล้วเลือกบันทึกรูปภาพ", "เปิด <b>Facebook</b> แล้วกด <b>สร้างสตอรี่</b>", "เลือกรูปนี้จากคลังรูปภาพ", "กด <b>แชร์ไปยังสตอรี่</b>"] }
 };
 
-/* ---------- Grandma Nuan (full colour, outfit + pose + face) ---------- */
+/* ---------- Grandma Somsri (full colour, outfit + pose + face) ---------- */
 const O = "#4a3428", SKIN = "#f2cfb1", HAIR = "#d6d1ca", ROSE = "#ee9c8f", GOLD = "#e3a93c", JADE = "#7db596";
 const OUTFITS = {
   home:     { top: "#fbf7ef", sleeve: "#fbf7ef", lace: true,  sarong: ["#7a4e33", "#d7a967"] },
@@ -449,7 +449,7 @@ function grandmaSVG({ outfit = "home", pose = "wave", face = "smile" } = {}, ani
   const right = arms[2] === "wave" && anim ? `<g class="gm-wave">${armSvg(1)}</g>` : armSvg(1);
   const fan = extra === "fan" ? `<g class="${anim ? "gm-fan" : ""}"><path d="M148 94 L128 66 A26 26 0 0 1 168 66 Z" fill="#d9574a" stroke="${O}" stroke-width="2.2" stroke-linejoin="round"/><path d="M148 94 L138 62 M148 94 L148 60 M148 94 L158 62" stroke="#f4c3ad" stroke-width="1.6"/></g>` : "";
   const sparks = extra === "spark" ? spark(28, 54, anim) + spark(172, 50, anim) + spark(20, 100, anim) : "";
-  return `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ยายนวล">
+  return `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ยายสมศรี">
   <defs>
     <pattern id="sar-${id}" width="22" height="16" patternUnits="userSpaceOnUse"><rect width="22" height="16" fill="${of.sarong[0]}"/><path d="M0 8 Q5.5 3 11 8 T22 8" stroke="${of.sarong[1]}" stroke-width="2" fill="none"/><circle cx="11" cy="14" r="1.6" fill="${of.sarong[1]}"/></pattern>
     <pattern id="flo-${id}" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#f5cf5e"/><circle cx="5" cy="5" r="2.6" fill="#fff"/><circle cx="5" cy="5" r="1.1" fill="#e5806a"/><circle cx="14" cy="13" r="2.6" fill="#f08f7c"/><circle cx="14" cy="13" r="1" fill="#fff"/></pattern>
@@ -685,7 +685,7 @@ function holdButton() {
 /* ---------- Free typing: grandma answers through Claude when this view allows it ---------- */
 let sample = null;
 (async () => { try { sample = window.claude ? await window.claude.use("sample") : null; } catch (e) { sample = null; } })();
-const RULES = `คุณคือ "ยายนวล" คุณยายชาวไทยวัย 75 ใจดี อบอุ่น อยู่บ้านต่างจังหวัด กำลังแชทกับหลานในแอพ "แสงเช้า" แอพให้กำลังใจตอนเช้า
+const RULES = `คุณคือ "ยายสมศรี" คุณยายชาวไทยวัย 75 ใจดี อบอุ่น อยู่บ้านต่างจังหวัด กำลังแชทกับหลานในแอพ "แสงเช้า" แอพให้กำลังใจตอนเช้า
 วิธีพูด: เรียกตัวเองว่า "ยาย" เรียกอีกฝ่ายว่า "หลาน" หรือ "ลูก" ใช้ภาษาพูดแบบยายไทย อบอุ่น เรียบง่าย ลงท้าย "นะลูก" "จ้ะ" ได้ ตอบสั้น 1–3 ประโยคเหมือนแชทจริง ไม่ใช้อีโมจิ ไม่ทำเป็นหัวข้อหรือรายการ
 พูดด้วยความรักและความใส่ใจจากใจยายจริง ๆ: รับฟังก่อน ไม่ตัดสิน สะท้อนสิ่งที่หลานเล่ามาให้รู้ว่ายายฟังอยู่ จำรายละเอียดที่หลานเล่าในบทสนทนาแล้วถามไถ่ต่อ ห่วงเรื่องกินอยู่ หลับนอน สุขภาพ และแนะนำเรื่องง่าย ๆ ในชีวิต เช่น กินข้าว พักผ่อน ดื่มน้ำ ออกไปรับแดด โทรหาคนที่รัก
 ห้ามพูดประโยคหรือสำนวนซ้ำกับที่ยายเคยพูดไปแล้วในบทสนทนา เลือกคำใหม่ทุกครั้งให้เป็นธรรมชาติเหมือนคนจริง
@@ -774,7 +774,7 @@ async function makeStory(text, platform) {
   // Eyebrow
   ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
   ctx.font = `400 38px ${F}`; ctx.fillStyle = "#7b6a60";
-  ctx.fillText(m ? `ยายนวลฝากมา ตอนหลาน${m.label}` : "ยายนวลฝากมาบอก", cx, P.top + 60);
+  ctx.fillText(m ? `ยายสมศรีฝากมา ตอนหลาน${m.label}` : "ยายสมศรีฝากมาบอก", cx, P.top + 60);
 
   // Grandma standing on the floor
   const GH = 640, GW = GH * 200 / 250, gTop = floorY + 120 - GH;
@@ -805,7 +805,7 @@ async function makeStory(text, platform) {
     for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (qr.isDark(r, c)) ctx.fillRect(qx + c * cell, qy + r * cell, Math.ceil(cell), Math.ceil(cell));
   }
   const tx = qx + qs + 28;
-  ctx.fillStyle = "#33251f"; ctx.font = `500 38px ${F}`; ctx.fillText("คุยกับยายนวล", tx, py + 76);
+  ctx.fillStyle = "#33251f"; ctx.font = `500 38px ${F}`; ctx.fillText("คุยกับยายสมศรี", tx, py + 76);
   ctx.font = `300 28px ${F}`; ctx.fillStyle = "#7b6a60";
   ctx.fillText("สแกนให้ยายกอด", tx, py + 118);
   ctx.fillText("ทุกเช้าที่แสงเช้า", tx, py + 154);
@@ -814,7 +814,7 @@ async function makeStory(text, platform) {
 
 /* ---------- Share sheet ---------- */
 let storyURL = null, lastFocus = null, platform = PLATFORMS[store.get("platform", "ig")] ? store.get("platform", "ig") : "ig";
-const caption = () => currentQuote() + "\n\nคุยกับยายนวลทุกเช้าที่แสงเช้า " + APP_URL + "\n#แสงเช้า #คำยาย #กำลังใจ";
+const caption = () => currentQuote() + "\n\nคุยกับยายสมศรีทุกเช้าที่แสงเช้า " + APP_URL + "\n#แสงเช้า #คำยาย #กำลังใจ";
 async function renderStory() {
   const P = PLATFORMS[platform];
   document.querySelectorAll("[data-platform]").forEach(b => b.setAttribute("aria-pressed", b.dataset.platform === platform));
