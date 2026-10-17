@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/morning.js": { "includeFiles": "index.html" }
+  },
+  "crons": [
+    { "path": "/api/morning", "schedule": "0 0 * * *" }
+  ]
+}

@@ -21,3 +21,7 @@ npx serve .
 ## Deploy
 
 เชื่อม repo นี้กับ Vercel ได้เลย (Framework preset: Other, ไม่ต้องตั้ง build command)
+
+## LINE OA
+
+ยายนวลมีบัญชี LINE OA ได้ เปิดเว็บจาก Rich menu และส่งคำคมทุกเช้า 7 โมงผ่าน `api/morning.js` กับ Vercel Cron ดูขั้นตอนตั้งค่าที่ [docs/line-setup.md](docs/line-setup.md)
